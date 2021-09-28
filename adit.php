@@ -55,7 +55,6 @@ if (isset($_REQUEST['ok'])) {
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-
 <body>
 	<div class="container">
 		<img src="manas.png" class="img-fluid"><br>

@@ -24,17 +24,22 @@ $row = mysqli_fetch_assoc($querys);
     border-collapse: collapse;
     padding: 5px 15px;
   }
+
+  .form-control {
+    margin-right: 20px;
+  }
 </style>
 <br>
-<label for="goal">Projected Revenue</label>
-<input class="form-control" id="goal" type="text" name="" value="<?= $row['goal'] ?>">
-
-<label for="Projected">Client Value</label>
-<input class="form-control" id="clientval" type="text" name="" value="<?= $row['client'] ?>">
-<label for="Projected">Number Of Client (Annual)</label>
-<input class="form-control" id="numofclient" type="text" value="<?php echo (mysqli_num_rows($querys) > 0) ? round((int)$row['goal'] / (int)$row['client']) : ""; ?>" disabled>
-<br><br><br>
-<table style="width:100%">
+<center>
+  <label for="goal">Projected Revenue: </label>
+  <input class="form-control" id="goal" type="text" name="" value="<?= $row['goal'] ?>">
+  <label for="Projected">Client Value: </label>
+  <input class="form-control" id="clientval" type="text" name="" value="<?= $row['client'] ?>">
+  <label for="Projected">Number Of Client (Annual) </label>
+  <input class="form-control" id="numofclient" type="text" value="<?php echo (mysqli_num_rows($querys) > 0) ? round((int)$row['goal'] / (int)$row['client']) : ""; ?>" disabled>
+</center>
+<br>
+<table style="width:99%;margin:8px">
   <thead>
     <tr>
       <th>ERROR - Please enter January 1st of any year here --></th>
@@ -100,7 +105,7 @@ $row = mysqli_fetch_assoc($querys);
   </tbody>
 </table>
 <br>
-<table style="width:100%">
+<table style="width:99%;margin:8px">
   <thead>
     <tr>
       <th class=""></th>
@@ -148,8 +153,8 @@ $row = mysqli_fetch_assoc($querys);
     </tr>
   </tbody>
 </table>
-<br><br>
-<table style="width:100%">
+<br>
+<table style="width:99%;margin:8px">
   <thead>
     <tr>
       <th class=""></th>
@@ -325,7 +330,7 @@ $row = mysqli_fetch_assoc($querys);
       if (isNaN(perofconvert)) {
         alert(perofconvert + " is not a number");
       } else {
-        if ( perofconvert < 25) {
+        if (perofconvert < 25) {
           var convertnum = $('#numofconvert').text();
           var reach = convertnum / (perofconvert / 100);
           $('#numofreach').text(parseInt(reach));

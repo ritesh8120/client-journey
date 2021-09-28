@@ -82,212 +82,6 @@ if (isset($_GET['submit'])) {
         text-align: center;
     }
 </style>
-<h1> Savage Prospecting Dashboard - Today's Summery </h1>
-<table id="day" style="width:100%">
-    <thead>
-        <tr>
-            <th colspan="3">Intro call </th>
-            <th colspan="3">Disco</th>
-            <th colspan="2">No Show</th>
-            <th>VSL </th>
-            <th colspan="3">SALES CALLS</th>
-        </tr>
-        <tr>
-            <th>Scheduled</th>
-            <th>Taken</th>
-            <th>Rate</th>
-            <th>Scheduled</th>
-            <th>Taken</th>
-            <th>Rate</th>
-            <th>No Show</th>
-            <th>Rate</th>
-            <th>#</th>
-            <th>Called</th>
-            <th>Sold</th>
-            <th>Rate</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><?= (getcheck(strtotime(date('M-d-y')), 'q') > 0) ? getcheck(strtotime(date('M-d-y')), 'q') : 0; ?></td>
-            <td><?= (getcheck(strtotime(date('M-d-y')), 'r') > 0) ? getcheck(strtotime(date('M-d-y')), 'r') : 0; ?></td>
-            <td><?php if (getcheck(strtotime(date('M-d-y')), 'q') > 0 && getcheck(strtotime(date('M-d-y')), 'r') > 0) {
-                    $rateintro = getcheck(strtotime(date('M-d-y')), 'q') / getcheck(strtotime(date('M-d-y')), 'r');
-                    echo round($rateintro, 2) . "%";
-                } else {
-                    echo 0;
-                } ?></td>
-            <td><?= (getcheck(strtotime(date('M-d-y')), 't') > 0) ? getcheck(strtotime(date('M-d-y')), 't') : 0; ?></td>
-            <td><?= (getcheck(strtotime(date('M-d-y')), 'u') > 0) ? getcheck(strtotime(date('M-d-y')), 'u') : 0; ?></td>
-            <td><?php if (getcheck(strtotime(date('M-d-y')), 't') > 0 && getcheck(strtotime(date('M-d-y')), 'u') > 0) {
-                    $rateintro1 = getcheck(strtotime(date('M-d-y')), 't') / getcheck(strtotime(date('M-d-y')), 'u');
-                    echo  round($rateintro1, 2) . "%";
-                } else {
-                    echo 0;
-                } ?></td>
-            <td><?php if (getcheck(strtotime(date('M-d-y')), 's') > 0 && getcheck(strtotime(date('M-d-y')), 't') > 0) {
-                    $noshowing =  getcheck(strtotime(date('M-d-y')), 's') - getcheck(strtotime(date('M-d-y')), 't');
-                    echo  $noshowing;
-                } else {
-                    $noshowing = 0;
-                    echo 0;
-                } ?></td>
-            <td><?php if (getcheck(strtotime(date('M-d-y')), 't') > 0 && $noshowing > 0) {
-                    $rateintro2 = getcheck(strtotime(date('M-d-y')), 't') / $noshowing;
-                    echo round($rateintro2, 2) . "%";
-                } else {
-                    echo 0;
-                } ?></td>
-            <td><?= (getcheck(strtotime(date('M-d-y')), 'v') > 0) ? getcheck(strtotime(date('M-d-y')), 'v') : 0; ?></td>
-            <td><?= (getcheck(strtotime(date('M-d-y')), 'x') > 0) ? getcheck(strtotime(date('M-d-y')), 'x') : 0; ?></td>
-            <td><?= (getcheck(strtotime(date('M-d-y')), 'y') > 0) ? getcheck(strtotime(date('M-d-y')), 'y') : 0; ?></td>
-            <td><?php if (getcheck(strtotime(date('M-d-y')), 'x') > 0 && getcheck(strtotime(date('M-d-y')), 'y') > 0) {
-                    $rateintro3 = getcheck(strtotime(date('M-d-y')), 'x') / getcheck(strtotime(date('M-d-y')), 'y');
-                    echo round($rateintro3, 2) . "%";
-                } else {
-                    echo 0;
-                } ?></td>
-        </tr>
-    </tbody>
-</table>
-<br>
-<h1> Savage Prospecting Dashboard - Week Summery </h1>
-<table id="week" style="width:100%">
-    <thead>
-        <tr>
-            <th colspan="3">Intro call </th>
-            <th colspan="3">Disco</th>
-            <th colspan="2">No Show</th>
-            <th>VSL </th>
-            <th colspan="3">SALES CALLS</th>
-        </tr>
-        <tr>
-            <th>Scheduled</th>
-            <th>Taken</th>
-            <th>Rate</th>
-            <th>Scheduled</th>
-            <th>Taken</th>
-            <th>Rate</th>
-            <th>No Show</th>
-            <th>Rate</th>
-            <th>#</th>
-            <th>Called</th>
-            <th>Sold</th>
-            <th>Rate</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><?= (getmonth(date('M'), 'q') > 0) ? getmonth(date('M'), 'q') : 0; ?></td>
-            <td><?= (getmonth(date('M'), 'r') > 0) ? getmonth(date('M'), 'r') : 0; ?></td>
-            <td><?php if (getmonth(date('M'), 'q') > 0 && getmonth(date('M'), 'r') > 0) {
-                    $rateintro = getmonth(date('M'), 'q') / getmonth(date('M'), 'r');
-                    echo round($rateintro, 2) . "%";
-                } else {
-                    echo 0;
-                } ?></td>
-            <td><?= (getmonth(date('M'), 't') > 0) ? getmonth(date('M'), 't') : 0; ?></td>
-            <td><?= (getmonth(date('M'), 'u') > 0) ? getmonth(date('M'), 'u') : 0; ?></td>
-            <td><?php if (getmonth(date('M'), 't') > 0 && getmonth(date('M'), 'u') > 0) {
-                    $rateintro1 = getmonth(date('M'), 't') / getmonth(date('M'), 'u');
-                    echo  round($rateintro1, 2) . "%";
-                } else {
-                    echo 0;
-                } ?></td>
-            <td><?php if (getmonth(date('M'), 's') > 0 && getmonth(date('M'), 't') > 0) {
-                    $noshowing =  getmonth(date('M'), 's') - getmonth(date('M'), 't');
-                    echo  $noshowing;
-                } else {
-                    $noshowing = 0;
-                    echo 0;
-                } ?></td>
-            <td><?php if (getmonth(date('M'), 't') > 0 && $noshowing > 0) {
-                    $rateintro2 = getmonth(date('M'), 't') / $noshowing;
-                    echo round($rateintro2, 2) . "%";
-                } else {
-                    echo 0;
-                } ?></td>
-            <td><?= (getmonth(date('M'), 'v') > 0) ? getmonth(date('M'), 'v') : 0; ?></td>
-            <td><?= (getmonth(date('M'), 'x') > 0) ? getmonth(date('M'), 'x') : 0; ?></td>
-            <td><?= (getmonth(date('M'), 'y') > 0) ? getmonth(date('M'), 'y') : 0; ?></td>
-            <td><?php if (getmonth(date('M'), 'x') > 0) {
-                    $rateintro3 = getmonth(date('M'), 'x') / getmonth(date('M'), 'y');
-                    echo round($rateintro3, 2) . "%";
-                } else {
-                    echo 0;
-                } ?></td>
-        </tr>
-    </tbody>
-</table>
-<br>
-<h1> Savage Prospecting Dashboard - Month Summery </h1>
-<table id="month" style="width:100%">
-    <thead>
-        <tr>
-            <th colspan="3">Intro call </th>
-            <th colspan="3">Disco</th>
-            <th colspan="2">No Show</th>
-            <th>VSL </th>
-            <th colspan="3">SALES CALLS</th>
-        </tr>
-        <tr>
-            <th>Scheduled</th>
-            <th>Taken</th>
-            <th>Rate</th>
-            <th>Scheduled</th>
-            <th>Taken</th>
-            <th>Rate</th>
-            <th>No Show</th>
-            <th>Rate</th>
-            <th>#</th>
-            <th>Called</th>
-            <th>Sold</th>
-            <th>Rate</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><?= (getyear(date('Y'), 'q') > 0) ? getyear(date('Y'), 'q') : 0; ?></td>
-            <td><?= (getyear(date('Y'), 'r') > 0) ? getyear(date('Y'), 'r') : 0; ?></td>
-            <td><?php if (getyear(date('Y'), 'q') > 0 &&getyear(date('Y'), 'r') > 0) {
-                    $rateintro = getyear(date('Y'), 'q') / getyear(date('Y'), 'r');
-                    echo round($rateintro, 2) . "%";
-                } else {
-                    echo 0;
-                } ?></td>
-            <td><?= (getyear(date('Y'), 't') > 0) ? getyear(date('Y'), 't') : 0; ?></td>
-            <td><?= (getyear(date('Y'), 'u') > 0) ? getyear(date('Y'), 'u') : 0; ?></td>
-            <td><?php if (getyear(date('Y'), 't') > 0 && getyear(date('Y'), 'u') > 0) {
-                    $rateintro1 = getyear(date('Y'), 't') / getyear(date('Y'), 'u');
-                    echo  round($rateintro1, 2) . "%";
-                } else {
-                    echo 0;
-                } ?></td>
-            <td><?php if (getyear(date('Y'), 's') > 0 && getyear(date('Y'), 't') > 0) {
-                    $noshowing =  getyear(date('Y'), 's') - getyear(date('Y'), 't');
-                    echo  $noshowing;
-                } else {
-                    $noshowing = 0;
-                    echo 0;
-                } ?></td>
-            <td><?php if (getyear(date('Y'), 't') > 0 && $noshowing > 0) {
-                    $rateintro2 = getyear(date('Y'), 't') / $noshowing;
-                    echo round($rateintro2, 2) . "%";
-                } else {
-                    echo 0;
-                } ?></td>
-            <td><?= (getyear(date('Y'), 'v') > 0) ? getyear(date('Y'), 'v') : 0; ?></td>
-            <td><?= (getyear(date('Y'), 'x') > 0) ? getyear(date('Y'), 'x') : 0; ?></td>
-            <td><?= (getyear(date('Y'), 'y') > 0) ? getyear(date('Y'), 'y') : 0; ?></td>
-            <td><?php if (getyear(date('Y'), 'x') > 0 && getyear(date('Y'), 'y') > 0) {
-                    $rateintro3 = getyear(date('Y'), 'x') / getyear(date('Y'), 'y');
-                    echo round($rateintro3, 2) . "%";
-                } else {
-                    echo 0; 
-                } ?></td>
-        </tr>
-    </tbody>
-</table>
 <?php
 include 'config.php';
 $querys = mysqli_query($conn, "SELECT * FROM `projection` WHERE `fld_year`='$currentYear'");
@@ -338,7 +132,7 @@ $disconum = $shownum + $discosnum;
 $reachnum = $disconum / 0.3;
 ?>
 <h1>Savage Prospecting Dashboard</h1>
-<table style="width: 100%;">
+<table style="width:99%;margin:8px">
     <tr>
         <th></th>
         <td>Monthly Goal</td>
@@ -416,4 +210,211 @@ $reachnum = $disconum / 0.3;
         ?>
         <td <?= $css ?>><?php echo $data ?></td>
     </tr>
+</table>
+<br>
+<h1> Savage Prospecting Dashboard - Today's summary </h1>
+<table id="day" style="width:99%;margin:8px">
+    <thead>
+        <tr>
+            <th colspan="3">Intro call </th>
+            <th colspan="3">Disco</th>
+            <th colspan="2">No Show</th>
+            <th>VSL </th>
+            <th colspan="3">SALES CALLS</th>
+        </tr>
+        <tr>
+            <th>Scheduled</th>
+            <th>Taken</th>
+            <th>Rate</th>
+            <th>Scheduled</th>
+            <th>Taken</th>
+            <th>Rate</th>
+            <th>No Show</th>
+            <th>Rate</th>
+            <th>#</th>
+            <th>Called</th>
+            <th>Sold</th>
+            <th>Rate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><?= (getcheck(strtotime(date('M-d-y')), 'q') > 0) ? getcheck(strtotime(date('M-d-y')), 'q') : 0; ?></td>
+            <td><?= (getcheck(strtotime(date('M-d-y')), 'r') > 0) ? getcheck(strtotime(date('M-d-y')), 'r') : 0; ?></td>
+            <td><?php if (getcheck(strtotime(date('M-d-y')), 'q') > 0 && getcheck(strtotime(date('M-d-y')), 'r') > 0) {
+                    $rateintro = getcheck(strtotime(date('M-d-y')), 'q') / getcheck(strtotime(date('M-d-y')), 'r');
+                    echo round($rateintro, 2) . "%";
+                } else {
+                    echo 0;
+                } ?></td>
+            <td><?= (getcheck(strtotime(date('M-d-y')), 't') > 0) ? getcheck(strtotime(date('M-d-y')), 't') : 0; ?></td>
+            <td><?= (getcheck(strtotime(date('M-d-y')), 'u') > 0) ? getcheck(strtotime(date('M-d-y')), 'u') : 0; ?></td>
+            <td><?php if (getcheck(strtotime(date('M-d-y')), 't') > 0 && getcheck(strtotime(date('M-d-y')), 'u') > 0) {
+                    $rateintro1 = getcheck(strtotime(date('M-d-y')), 't') / getcheck(strtotime(date('M-d-y')), 'u');
+                    echo  round($rateintro1, 2) . "%";
+                } else {
+                    echo 0;
+                } ?></td>
+            <td><?php if (getcheck(strtotime(date('M-d-y')), 's') > 0 && getcheck(strtotime(date('M-d-y')), 't') > 0) {
+                    $noshowing =  getcheck(strtotime(date('M-d-y')), 's') - getcheck(strtotime(date('M-d-y')), 't');
+                    echo  $noshowing;
+                } else {
+                    $noshowing = 0;
+                    echo 0;
+                } ?></td>
+            <td><?php if (getcheck(strtotime(date('M-d-y')), 't') > 0 && $noshowing > 0) {
+                    $rateintro2 = getcheck(strtotime(date('M-d-y')), 't') / $noshowing;
+                    echo round($rateintro2, 2) . "%";
+                } else {
+                    echo 0;
+                } ?></td>
+            <td><?= (getcheck(strtotime(date('M-d-y')), 'v') > 0) ? getcheck(strtotime(date('M-d-y')), 'v') : 0; ?></td>
+            <td><?= (getcheck(strtotime(date('M-d-y')), 'x') > 0) ? getcheck(strtotime(date('M-d-y')), 'x') : 0; ?></td>
+            <td><?= (getcheck(strtotime(date('M-d-y')), 'y') > 0) ? getcheck(strtotime(date('M-d-y')), 'y') : 0; ?></td>
+            <td><?php if (getcheck(strtotime(date('M-d-y')), 'x') > 0 && getcheck(strtotime(date('M-d-y')), 'y') > 0) {
+                    $rateintro3 = getcheck(strtotime(date('M-d-y')), 'x') / getcheck(strtotime(date('M-d-y')), 'y');
+                    echo round($rateintro3, 2) . "%";
+                } else {
+                    echo 0;
+                } ?></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<h1> Savage Prospecting Dashboard - Week summary </h1>
+<table id="week" style="width:99%;margin:8px">
+    <thead>
+        <tr>
+            <th colspan="3">Intro call </th>
+            <th colspan="3">Disco</th>
+            <th colspan="2">No Show</th>
+            <th>VSL </th>
+            <th colspan="3">SALES CALLS</th>
+        </tr>
+        <tr>
+            <th>Scheduled</th>
+            <th>Taken</th>
+            <th>Rate</th>
+            <th>Scheduled</th>
+            <th>Taken</th>
+            <th>Rate</th>
+            <th>No Show</th>
+            <th>Rate</th>
+            <th>#</th>
+            <th>Called</th>
+            <th>Sold</th>
+            <th>Rate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><?= (getmonth(date('M'), 'q') > 0) ? getmonth(date('M'), 'q') : 0; ?></td>
+            <td><?= (getmonth(date('M'), 'r') > 0) ? getmonth(date('M'), 'r') : 0; ?></td>
+            <td><?php if (getmonth(date('M'), 'q') > 0 && getmonth(date('M'), 'r') > 0) {
+                    $rateintro = getmonth(date('M'), 'q') / getmonth(date('M'), 'r');
+                    echo round($rateintro, 2) . "%";
+                } else {
+                    echo 0;
+                } ?></td>
+            <td><?= (getmonth(date('M'), 't') > 0) ? getmonth(date('M'), 't') : 0; ?></td>
+            <td><?= (getmonth(date('M'), 'u') > 0) ? getmonth(date('M'), 'u') : 0; ?></td>
+            <td><?php if (getmonth(date('M'), 't') > 0 && getmonth(date('M'), 'u') > 0) {
+                    $rateintro1 = getmonth(date('M'), 't') / getmonth(date('M'), 'u');
+                    echo  round($rateintro1, 2) . "%";
+                } else {
+                    echo 0;
+                } ?></td>
+            <td><?php if (getmonth(date('M'), 's') > 0 && getmonth(date('M'), 't') > 0) {
+                    $noshowing =  getmonth(date('M'), 's') - getmonth(date('M'), 't');
+                    echo  $noshowing;
+                } else {
+                    $noshowing = 0;
+                    echo 0;
+                } ?></td>
+            <td><?php if (getmonth(date('M'), 't') > 0 && $noshowing > 0) {
+                    $rateintro2 = getmonth(date('M'), 't') / $noshowing;
+                    echo round($rateintro2, 2) . "%";
+                } else {
+                    echo 0;
+                } ?></td>
+            <td><?= (getmonth(date('M'), 'v') > 0) ? getmonth(date('M'), 'v') : 0; ?></td>
+            <td><?= (getmonth(date('M'), 'x') > 0) ? getmonth(date('M'), 'x') : 0; ?></td>
+            <td><?= (getmonth(date('M'), 'y') > 0) ? getmonth(date('M'), 'y') : 0; ?></td>
+            <td><?php if (getmonth(date('M'), 'x') > 0) {
+                    $rateintro3 = getmonth(date('M'), 'x') / getmonth(date('M'), 'y');
+                    echo round($rateintro3, 2) . "%";
+                } else {
+                    echo 0;
+                } ?></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<h1> Savage Prospecting Dashboard - Month summary </h1>
+<table id="month" style="width:99%;margin:8px">
+    <thead>
+        <tr>
+            <th colspan="3">Intro call </th>
+            <th colspan="3">Disco</th>
+            <th colspan="2">No Show</th>
+            <th>VSL </th>
+            <th colspan="3">SALES CALLS</th>
+        </tr>
+        <tr>
+            <th>Scheduled</th>
+            <th>Taken</th>
+            <th>Rate</th>
+            <th>Scheduled</th>
+            <th>Taken</th>
+            <th>Rate</th>
+            <th>No Show</th>
+            <th>Rate</th>
+            <th>#</th>
+            <th>Called</th>
+            <th>Sold</th>
+            <th>Rate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><?= (getyear(date('Y'), 'q') > 0) ? getyear(date('Y'), 'q') : 0; ?></td>
+            <td><?= (getyear(date('Y'), 'r') > 0) ? getyear(date('Y'), 'r') : 0; ?></td>
+            <td><?php if (getyear(date('Y'), 'q') > 0 && getyear(date('Y'), 'r') > 0) {
+                    $rateintro = getyear(date('Y'), 'q') / getyear(date('Y'), 'r');
+                    echo round($rateintro, 2) . "%";
+                } else {
+                    echo 0;
+                } ?></td>
+            <td><?= (getyear(date('Y'), 't') > 0) ? getyear(date('Y'), 't') : 0; ?></td>
+            <td><?= (getyear(date('Y'), 'u') > 0) ? getyear(date('Y'), 'u') : 0; ?></td>
+            <td><?php if (getyear(date('Y'), 't') > 0 && getyear(date('Y'), 'u') > 0) {
+                    $rateintro1 = getyear(date('Y'), 't') / getyear(date('Y'), 'u');
+                    echo  round($rateintro1, 2) . "%";
+                } else {
+                    echo 0;
+                } ?></td>
+            <td><?php if (getyear(date('Y'), 's') > 0 && getyear(date('Y'), 't') > 0) {
+                    $noshowing =  getyear(date('Y'), 's') - getyear(date('Y'), 't');
+                    echo  $noshowing;
+                } else {
+                    $noshowing = 0;
+                    echo 0;
+                } ?></td>
+            <td><?php if (getyear(date('Y'), 't') > 0 && $noshowing > 0) {
+                    $rateintro2 = getyear(date('Y'), 't') / $noshowing;
+                    echo round($rateintro2, 2) . "%";
+                } else {
+                    echo 0;
+                } ?></td>
+            <td><?= (getyear(date('Y'), 'v') > 0) ? getyear(date('Y'), 'v') : 0; ?></td>
+            <td><?= (getyear(date('Y'), 'x') > 0) ? getyear(date('Y'), 'x') : 0; ?></td>
+            <td><?= (getyear(date('Y'), 'y') > 0) ? getyear(date('Y'), 'y') : 0; ?></td>
+            <td><?php if (getyear(date('Y'), 'x') > 0 && getyear(date('Y'), 'y') > 0) {
+                    $rateintro3 = getyear(date('Y'), 'x') / getyear(date('Y'), 'y');
+                    echo round($rateintro3, 2) . "%";
+                } else {
+                    echo 0;
+                } ?></td>
+        </tr>
+    </tbody>
 </table>

@@ -41,8 +41,10 @@ function gettotalaccept($month, $year)
 
 if (isset($_GET['submit'])) {
     $currentYear = $_GET['admission_year'];
+    $admission_month = $_GET['admission_month'];
 } else {
     $currentYear = date('Y');
+    $admission_month = date('F');
 }
 
 function getweek($m, $fld_type, $currentY)

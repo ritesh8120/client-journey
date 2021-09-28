@@ -25,11 +25,11 @@ $row = mysqli_fetch_array($querys);
     <form action="" method="post" id="facebookgroupadd" style="background-color: #d9d9d9; padding: 25px;">
         <?php // echo $sucees 
         ?>
-        <div class="form-group">
-            <strong>Add New : </strong>
+        <!-- <div class="form-group"> -->
+            <!-- <strong>Add New : </strong> -->
             <input class="form-control" type="hidden" name="fld_id" value="<?= $row['fld_id']; ?>">
-            <input type="text" name="addnew" class="form-control" autocomplete="autocomplete" value="<?= $row['addnew'] ?>">
-        </div>
+            <input type="hidden" name="addnew" class="form-control" autocomplete="autocomplete" value="<?= $row['addnew'] ?>">
+        <!-- </div> -->
         <div class="form-group">
             <strong>Facebook Group Name: </strong>
             <input type="text" name="fbgname" autocomplete="autocomplete" class="form-control" value="<?= $row['fbgname'] ?>">
@@ -48,7 +48,7 @@ $row = mysqli_fetch_array($querys);
         </div>
         <div class="form-group">
             <strong>Current Members: </strong>
-            <input type="text" name="currentm" class="form-control" autocomplete="autocomplete" value="<?= $row['currentm'] ?>">
+            <input type="number" name="currentm" class="form-control" autocomplete="autocomplete" value="<?= $row['currentm'] ?>">
         </div>
 
         <div class="form-group">

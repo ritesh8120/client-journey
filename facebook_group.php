@@ -28,14 +28,13 @@ if (isset($_REQUEST["delid"])) {
 
 <div class="container">
     <center><img src="manas.png" class="img-fluid" width="800"></center><br><br><br>
-    <h4 style="float:right;">Facebook Group List</h4>
+    <h1 style="text-align: center; font-size: 40px;font-weight: 800;">Facebook Group List</h1>
 
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th class="text-center">No</th>
                 <th class="text-center">Date</th>
-                <th class="text-center">Add new </th>
                 <th class="text-center">Facebook Group Name</th>
                 <th class="text-center">Facebook Group Link</th>
                 <th class="text-center">Admin Name</th>
@@ -56,12 +55,11 @@ if (isset($_REQUEST["delid"])) {
                     <tr>
                         <td class="text-center"><?php echo $i; ?></td>
                         <td class="text-center"><?= date('m/d/y', strtotime($row['date'])); ?></td>
-                        <td class="text-center"><?php echo $row['addnew'] ?></td>
                         <td class="text-center"><?php echo $row['fbgname'] ?></td>
                         <td class="text-center"><a href="<?php echo $row['fbglink'] ?>" target="_blank"><?php echo $row['fbglink'] ?></a></td>
                         <td class="text-center"><?php echo $row['adminname'] ?></td>
                         <td class="text-center"><a href="<?php echo $row['adminplink'] ?>" target="_blank"><?php echo $row['adminplink'] ?></a></td>
-                        <td class=" text-center"><?php echo $row['currentm'] ?></td>
+                        <td class="text-center"><?php echo $row['currentm'] ?></td>
                         <td class="text-center"><a href="posthistory?id=<?php echo $row['fld_id'] ?>"><i class="fab fa-searchengin" style="font-size: 30px;"></i></a></td>
                         <td class="text-center"><a href="editfb?id=<?php echo $row['fld_id'] ?>"><i class="fas fa-pen-square" style="font-size: 25px;"></i></a></td>
                         <td class="text-center"><a href="facebook_group?delid=<?php echo $row['fld_id'] ?>" onclick="return confirm('<?php echo $row['addnew']; ?>\n Are you sure you want to delete?')"><img src="garbage.png" height="30px"></a></td>
@@ -72,8 +70,6 @@ if (isset($_REQUEST["delid"])) {
             ?>
         </tbody>
     </table>
-    <!--</div>-->
-</div>
 </div>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>

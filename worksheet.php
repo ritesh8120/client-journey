@@ -35,7 +35,7 @@ if (isset($_GET['submit'])) {
     }
 } else {
     $currentY = date('Y');
-    $month = "01";
+    $month = date('m');
 }
 
 $getdate = getDatesFromRange($currentY . '-' . $month . '-01', $currentY . '-' . $month . '-31');

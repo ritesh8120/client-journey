@@ -11,6 +11,22 @@
 
 <body>
     <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        h1{
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 42px;
+        }
+        td{
+            font-size: 23px;
+        }
+        th{
+            font-size: 23px;
+            font-weight: 800px;
+        }
         .form-control {
             width: 300px;
             padding: 5px 10px;
@@ -79,16 +95,26 @@
         <li><a href="logout">Logout</a> </li>
 
     </ul>
-    <form>
+    <form style="margin: 20px;">
+    
         <?php
+        if (isset($_GET['submit'])) {
+            $currentYear = $_GET['admission_year'];
+            $admission_month = $_GET['admission_month'];
+        } else {
+            $currentYear = date('Y');
+            $admission_month = date('F');
+        }
         date_default_timezone_set("UTC");
-        echo '<label> Year:</label><br><select name="admission_year" class="form-control" data-component="date">';
+        echo '<label> Year: </label><br><select name="admission_year" id="admission_year" class="form-control" data-component="date">';
+        echo '<option value="' . $currentYear . '" checked>' . $currentYear . '</option>';
         for ($year = 2000; $year <= 3035; $year++) {
             echo '<option value="' . $year . '">' . $year . '</option>';
         }
-        echo "</select><br><br>";
+        echo "</select></div><br><br>";
         if (strstr($_SERVER['REQUEST_URI'], "worksheet")) {
             echo '<label> Month:</label><br><select name="admission_month" class="form-control" data-component="date">';
+            echo '<option value="' . $admission_month . '" checked>' . date('F', mktime(0, 0, 0, $admission_month, 10)) . '</option>';
             for ($i = 1; $i <= 12; $i++) {
                 $month = date('F', mktime(0, 0, 0, $i, 10));
                 echo '<option value="' . $i . '">' . $month . '</option>';

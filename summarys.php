@@ -12,6 +12,21 @@ function getcheck($month, $fld_type, $currentY)
     }
     return $data;
 }
+function getcheckrefle($month, $fld_type, $currentY)
+{
+    include 'config.php';
+    $querys = mysqli_query($conn, "SELECT * FROM `worksheet` WHERE `fld_date`='$month' AND `fld_tableId`='$fld_type' AND `fld_year`='$currentY'");
+    if (mysqli_num_rows($querys) > 0) {
+        $row = mysqli_fetch_assoc($querys);
+        if ($row['fld_tableId'] != '') {
+            $data = $row['fld_text'];
+        }
+    } else {
+        $data = '';
+    }
+    return $data;
+}
+
 
 function gettotalsend($month, $year)
 {
@@ -41,10 +56,10 @@ function gettotalaccept($month, $year)
 
 if (isset($_GET['submit'])) {
     $currentYear = $_GET['admission_year'];
-    $admission_month = $_GET['admission_month'];
+    // $admission_month = $_GET['admission_month'];
 } else {
     $currentYear = date('Y');
-    $admission_month = date('F');
+    // $admission_month = date('F');
 }
 
 function getweek($m, $fld_type, $currentY)
@@ -54,6 +69,20 @@ function getweek($m, $fld_type, $currentY)
     $data = 0;
     while ($row = mysqli_fetch_assoc($querys)) {
         $data += (int)$row['fld_text'];
+    }
+    return $data;
+}
+function getweekrefle($m, $fld_type, $currentY)
+{
+    include 'config.php';
+    $querys = mysqli_query($conn, "SELECT * FROM `worksheet` WHERE `fld_day`='$m' AND `fld_tableId`='$fld_type' AND `fld_year`='$currentY'");
+    if (mysqli_num_rows($querys) > 0) {
+        $row = mysqli_fetch_assoc($querys);
+        if ($row['fld_tableId'] != '') {
+            $data = $row['fld_text'];
+        }
+    } else {
+        $data = '';
     }
     return $data;
 }
@@ -173,25 +202,27 @@ $getdate = getDatesFromRange($currentYear . '-01-01', $currentYear . '-12-31');
         ?>
             <tr>
                 <td><?= $f; ?></td>
-                <td class="data10"><?= gettotalsend($month, $currentYear); ?></td>
-                <td class="data11"><?= gettotalaccept($month, $currentYear); ?></td>
-                <td class="data12"><?= getcheck($month, 'k', $currentYear); ?></td>
-                <td class="data13"><?= getcheck($month, 'l', $currentYear); ?></td>
-                <td class="data14"><?= getcheck($month, 'm', $currentYear); ?></td>
-                <td class="data15"><?= getcheck($month, 'n', $currentYear); ?></td>
-                <td class="data16"><?= getcheck($month, 'o', $currentYear); ?></td>
-                <td class="data17"><?= getcheck($month, 'p', $currentYear); ?></td>
-                <td class="data18"><?= getcheck($month, 'q', $currentYear); ?></td>
-                <td class="data19"><?= getcheck($month, 'r', $currentYear); ?></td>
-                <td class="data20"><?= getcheck($month, 's', $currentYear); ?></td>
-                <td class="data21"><?= getcheck($month, 't', $currentYear); ?></td>
-                <td class="data22"><?= getcheck($month, 'u', $currentYear); ?></td>
-                <td class="data23"><?= getcheck($month, 'v', $currentYear); ?></td>
-                <td class="data24"><?= getcheck($month, 'w', $currentYear); ?></td>
-                <td class="data25"><?= getcheck($month, 'x', $currentYear); ?></td>
-                <td class="data26"><?= getcheck($month, 'y', $currentYear); ?></td>
-                <td class="data27"><?= getcheck($month, 'z', $currentYear); ?></td>
-                <td class="data28"><?= getcheck($month, 'aa', $currentYear); ?></td>
+                <td><?= gettotalsend($month, $currentYear); ?></td>
+                <td><?= gettotalaccept($month, $currentYear); ?></td>
+                <td><?= getcheck($month, 'k', $currentYear); ?></td>
+                <td><?= getcheck($month, 'l', $currentYear); ?></td>
+                <td><?= getcheck($month, 'm', $currentYear); ?></td>
+                <td><?= getcheck($month, 'n', $currentYear); ?></td>
+                <td><?= getcheck($month, 'o', $currentYear); ?></td>
+                <td><?= getcheck($month, 'p', $currentYear); ?></td>
+                <td><?= getcheck($month, 'q', $currentYear); ?></td>
+                <td><?= getcheck($month, 'r', $currentYear); ?></td>
+                <td><?= getcheck($month, 's', $currentYear); ?></td>
+                <td><?= getcheck($month, 't', $currentYear); ?></td>
+                <td><?= getcheck($month, 'u', $currentYear); ?></td>
+                <td><?= getcheck($month, 'v', $currentYear); ?></td>
+                <td><?= getcheck($month, 'w', $currentYear); ?></td>
+                <td><?= getcheck($month, 'x', $currentYear); ?></td>
+                <td><?= getcheck($month, 'y', $currentYear); ?></td>
+                <td data-val="ab" data-date="<?= $month; ?>" data-year="<?= $currentYear ?>" contenteditable="true">
+                    <?php echo getcheckrefle($month, 'ab', $currentYear); ?></td>
+                <td data-val="ac" data-date="<?= $month; ?>" data-year="<?= $currentYear ?>" contenteditable="true">
+                    <?php echo getcheckrefle($month, 'ac', $currentYear); ?></td>
             </tr>
         <?php } ?>
         <tr>
@@ -226,8 +257,10 @@ $getdate = getDatesFromRange($currentYear . '-01-01', $currentYear . '-12-31');
                     <td><?php echo getweek(strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($day->format('D, M d'))))), 'w', $currentYear);  ?></td>
                     <td><?php echo getweek(strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($day->format('D, M d'))))), 'x', $currentYear);  ?></td>
                     <td><?php echo getweek(strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($day->format('D, M d'))))), 'y', $currentYear);  ?></td>
-                    <td><?php echo getweek(strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($day->format('D, M d'))))), 'z', $currentYear);  ?></td>
-                    <td><?php echo getweek(strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($day->format('D, M d'))))), 'aa', $currentYear);  ?></td>
+                    <td data-val="ab" data-day="<?= strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($day->format('D, M d'))))); ?>" data-year="<?= $currentYear ?>" contenteditable="true">
+                        <?php echo getweekrefle(strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($day->format('D, M d'))))), 'ab', $currentYear); ?></td>
+                    <td data-val="ac" data-day="<?= strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($day->format('D, M d'))))); ?>" data-year="<?= $currentYear ?>" contenteditable="true">
+                        <?php echo getweekrefle(strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($day->format('D, M d'))))), 'ac', $currentYear); ?></td>
                 </tr>
         <?php  } else {
                 echo '';
@@ -235,3 +268,27 @@ $getdate = getDatesFromRange($currentYear . '-01-01', $currentYear . '-12-31');
         } ?>
     </tbody>
 </table>
+
+<script>
+    $(document).ready(function() {
+        $('td').keyup(function() {
+            var data = $(this).text();
+            var tableId = $(this).data('val');
+            var fld_date = $(this).data('date');
+            var year = $(this).data('year');
+            var day = $(this).data('day');
+            $.ajax({
+                type: "post",
+                url: 'reflection',
+                data: {
+                    fld_date: fld_date,
+                    data: data,
+                    tableId: tableId,
+                    year: year,
+                    day: day,
+                },
+                success: function(data) {}
+            });
+        });
+    });
+</script>

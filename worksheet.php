@@ -1,6 +1,7 @@
 <?php
 $page = "worksheet";
 include 'header.php';
+include 'config.php';
 
 function getcheck($fld_tableId, $fld_date, $currentY)
 {
@@ -191,23 +192,23 @@ $getdate = getDatesFromRange($currentY . '-' . $month . '-01', $currentY . '-' .
                 <td data-cdate="<?= strtotime($row); ?>" data-val="r<?= $i ?>" data-type="r" data-date="<?= date('M', strtotime($row)); ?>" data-year="<?= $currentY ?>" data-day="<?= strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($row)))); ?>" contenteditable="true">
                     <?php echo getcheck('r' . $i, date('M', strtotime($row)), $currentY); ?></td>
                 <td data-cdate="<?= strtotime($row); ?>" data-val="s<?= $i ?>" data-type="s" data-date="<?= date('M', strtotime($row)); ?>" data-year="<?= $currentY ?>" data-day="<?= strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($row)))); ?>" contenteditable="true">
-                    <?php echo getcheck('r' . $i, date('M', strtotime($row)), $currentY); ?></td>
+                    <?php echo getcheck('s' . $i, date('M', strtotime($row)), $currentY); ?></td>
                 <td data-cdate="<?= strtotime($row); ?>" data-val="t<?= $i ?>" data-type="t" data-date="<?= date('M', strtotime($row)); ?>" data-year="<?= $currentY ?>" data-day="<?= strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($row)))); ?>" contenteditable="true">
-                    <?php echo getcheck('r' . $i, date('M', strtotime($row)), $currentY); ?></td>
+                    <?php echo getcheck('t' . $i, date('M', strtotime($row)), $currentY); ?></td>
                 <td data-cdate="<?= strtotime($row); ?>" data-val="u<?= $i ?>" data-type="u" data-date="<?= date('M', strtotime($row)); ?>" data-year="<?= $currentY ?>" data-day="<?= strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($row)))); ?>" contenteditable="true">
-                    <?php echo getcheck('r' . $i, date('M', strtotime($row)), $currentY); ?></td>
+                    <?php echo getcheck('u' . $i, date('M', strtotime($row)), $currentY); ?></td>
                 <td data-cdate="<?= strtotime($row); ?>" data-val="v<?= $i ?>" data-type="v" data-date="<?= date('M', strtotime($row)); ?>" data-year="<?= $currentY ?>" data-day="<?= strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($row)))); ?>" contenteditable="true">
-                    <?php echo getcheck('r' . $i, date('M', strtotime($row)), $currentY); ?></td>
+                    <?php echo getcheck('v' . $i, date('M', strtotime($row)), $currentY); ?></td>
                 <td data-cdate="<?= strtotime($row); ?>" data-val="w<?= $i ?>" data-type="w" data-date="<?= date('M', strtotime($row)); ?>" data-year="<?= $currentY ?>" data-day="<?= strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($row)))); ?>" contenteditable="true">
-                    <?php echo getcheck('r' . $i, date('M', strtotime($row)), $currentY); ?></td>
+                    <?php echo getcheck('w' . $i, date('M', strtotime($row)), $currentY); ?></td>
                 <td data-cdate="<?= strtotime($row); ?>" data-val="x<?= $i ?>" data-type="x" data-date="<?= date('M', strtotime($row)); ?>" data-year="<?= $currentY ?>" data-day="<?= strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($row)))); ?>" contenteditable="true">
-                    <?php echo getcheck('r' . $i, date('M', strtotime($row)), $currentY); ?></td>
+                    <?php echo getcheck('x' . $i, date('M', strtotime($row)), $currentY); ?></td>
                 <td data-cdate="<?= strtotime($row); ?>" data-val="y<?= $i ?>" data-type="y" data-date="<?= date('M', strtotime($row)); ?>" data-year="<?= $currentY ?>" data-day="<?= strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($row)))); ?>" contenteditable="true">
-                    <?php echo getcheck('r' . $i, date('M', strtotime($row)), $currentY); ?></td>
+                    <?php echo getcheck('y' . $i, date('M', strtotime($row)), $currentY); ?></td>
                 <td data-cdate="<?= strtotime($row); ?>" data-val="z<?= $i ?>" data-type="z" data-date="<?= date('M', strtotime($row)); ?>" data-year="<?= $currentY ?>" data-day="<?= strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($row)))); ?>" contenteditable="true">
-                    <?php echo getcheck('r' . $i, date('M', strtotime($row)), $currentY); ?></td>
+                    <?php echo getcheck('z' . $i, date('M', strtotime($row)), $currentY); ?></td>
                 <td data-cdate="<?= strtotime($row); ?>" data-val="aa<?= $i ?>" data-type="aa" data-date="<?= date('M', strtotime($row)); ?>" data-year="<?= $currentY ?>" data-day="<?= strtotime(date("Y-m-d", strtotime('sunday this week', strtotime($row)))); ?>" contenteditable="true">
-                    <?php echo getcheck('r' . $i, date('M', strtotime($row)), $currentY); ?></td>
+                    <?php echo getcheck('aa' . $i, date('M', strtotime($row)), $currentY); ?></td>
             </tr>
         <?php   }
         ?>

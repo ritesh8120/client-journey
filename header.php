@@ -100,10 +100,14 @@
         <?php
         if (isset($_GET['submit'])) {
             $currentYear = $_GET['admission_year'];
+            if (strstr($_SERVER['REQUEST_URI'], "worksheet")) {
             $admission_month = $_GET['admission_month'];
+            }
         } else {
             $currentYear = date('Y');
+            if (strstr($_SERVER['REQUEST_URI'], "worksheet")) {
             $admission_month = date('F');
+            }
         }
         date_default_timezone_set("UTC");
         echo '<label> Year: </label><br><select name="admission_year" id="admission_year" class="form-control" data-component="date">';

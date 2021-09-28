@@ -1,0 +1,704 @@
+/*model css*/
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-container > div {
+  width: 200px;
+  margin: 10px;
+}
+
+/*animation css*/
+.progressbar{
+	counter-reset: step;
+}
+
+.progressbar li:nth-child(1),
+.progressbar li:nth-child(2),
+.progressbar li:nth-child(3),
+.progressbar li:nth-child(4),
+.progressbar li:nth-child(5){
+	position: relative; 
+	list-style-type: none;
+	float: left;
+	width: 20%;			 
+	text-align: center;
+    font-size: 20px;
+    color: red;
+
+}
+.progressbar li:nth-child(6),
+.progressbar li:nth-child(7),
+.progressbar li:nth-child(8),
+.progressbar li:nth-child(9),
+.progressbar li:nth-child(10){
+	position: relative; 
+	list-style-type: none;
+	float: right;
+	width: 20%;			 
+	text-align: center;
+    font-size: 20px;
+    color: red;
+    top: 145px;
+}
+
+.progressbar li:nth-child(11),
+.progressbar li:nth-child(12),
+.progressbar li:nth-child(13),
+.progressbar li:nth-child(14),
+.progressbar li:nth-child(15){
+	position: relative; 
+	list-style-type: none;
+	float: left;
+	width: 20%;			 
+	text-align: center;
+    font-size: 20px;
+    color: red;
+    top: 290px;
+}
+.progressbar li:nth-child(16),
+.progressbar li:nth-child(17),
+.progressbar li:nth-child(18),
+.progressbar li:nth-child(19),
+.progressbar li:nth-child(20){
+	position: relative; 
+	list-style-type: none;
+	float: right;
+	width: 20%;			 
+	text-align: center;
+    font-size: 20px;
+    color: red;
+    top: 435px;
+}
+
+.progressbar li:nth-child(21),
+.progressbar li:nth-child(22),
+.progressbar li:nth-child(23),
+.progressbar li:nth-child(24),
+.progressbar li:nth-child(25){
+	position: relative; 
+	list-style-type: none;
+	float: left;
+	width: 20%;			 
+	text-align: center;
+    font-size: 20px;
+    color: red;
+    top: 585px;
+}
+
+.progressbar li:nth-child(26),
+.progressbar li:nth-child(27),
+.progressbar li:nth-child(28),
+.progressbar li:nth-child(29),
+.progressbar li:nth-child(30){
+	position: relative; 
+	list-style-type: none;
+	float: right;
+	width: 20%;			 
+	text-align: center;
+    font-size: 20px;
+    color: red;
+    top: 728px;
+}
+
+.progressbar li:nth-child(31),
+.progressbar li:nth-child(32),
+.progressbar li:nth-child(33),
+.progressbar li:nth-child(34),
+.progressbar li:nth-child(35){
+	position: relative; 
+	list-style-type: none;
+	float: left;
+	width: 20%;			 
+	text-align: center;
+    font-size: 20px;
+    color: red;
+    top: 875px;
+}
+
+
+.progressbar li:nth-child(36),
+.progressbar li:nth-child(37),
+.progressbar li:nth-child(38),
+.progressbar li:nth-child(39),
+.progressbar li:nth-child(40){
+	position: relative; 
+	list-style-type: none;
+	float: right;
+	width: 20%;			 
+	text-align: center;
+    font-size: 20px;
+    color: red;
+    top: 1020px;
+}
+.progressbar li:nth-child(41),
+.progressbar li:nth-child(42),
+.progressbar li:nth-child(43),
+.progressbar li:nth-child(44),
+.progressbar li:nth-child(45){
+	position: relative; 
+	list-style-type: none;
+	float: left;
+	width: 20%;			 
+	text-align: center;
+    font-size: 20px;
+    color: red;
+    top: 1165px;
+}
+
+.progressbar li:nth-child(46),
+.progressbar li:nth-child(47),
+.progressbar li:nth-child(48),
+.progressbar li:nth-child(49),
+.progressbar li:nth-child(50){
+	position: relative; 
+	list-style-type: none;
+	float: right;
+	width: 20%;			 
+	text-align: center;
+    font-size: 20px;
+    color: red;
+    top: 1308px;
+}
+
+.progressbar li:nth-child(51),
+.progressbar li:nth-child(52),
+.progressbar li:nth-child(53),
+.progressbar li:nth-child(54),
+.progressbar li:nth-child(55){
+	position: relative; 
+	list-style-type: none;
+	float: left;
+	width: 20%;			 
+	text-align: center;
+    font-size: 20px;
+    color: red;
+    top: 1455px;
+}
+.progressbar li:nth-child(56),
+.progressbar li:nth-child(57),
+.progressbar li:nth-child(58),
+.progressbar li:nth-child(59),
+.progressbar li:nth-child(60){
+	position: relative; 
+	list-style-type: none;
+	float: right;
+	width: 20%;			 
+	text-align: center;
+    font-size: 20px;
+    color: red;
+    top: 1600px;
+}
+.progressbar .blank:nth-child(n):before{
+	content: counter(step);
+	counter-increment: step;
+	width: 40px;
+	height: 40px;
+	line-height: 30px;
+	border: 4px solid #999; 
+	display: block;
+	text-align: center;
+    color: #999;
+    font-weight: bold;
+	margin: 0 auto 10px auto;
+	border-radius: 50%;
+	background: #fff ;
+}
+.progressbar .fill:nth-child(n):before{
+	content: counter(step);
+	counter-increment: step;
+	width: 40px;
+	height: 40px;
+	line-height: 30px;
+	border: 4px solid green; 
+	display: block;
+	text-align: center;
+    color: green;
+    font-weight: bold;
+	margin: 0 auto 10px auto;
+	border-radius: 50%;
+	background: #fff ;
+}
+.progressbar .blank:nth-child(1):after,
+.progressbar .blank:nth-child(2):after,
+.progressbar .blank:nth-child(3):after,
+.progressbar .blank:nth-child(4):after,
+.progressbar .blank:nth-child(21):after,
+.progressbar .blank:nth-child(22):after,
+.progressbar .blank:nth-child(23):after,
+.progressbar .blank:nth-child(24):after,
+.progressbar .blank:nth-child(11):after,
+.progressbar .blank:nth-child(12):after,
+.progressbar .blank:nth-child(13):after,
+.progressbar .blank:nth-child(14):after,
+.progressbar .blank:nth-child(31):after,
+.progressbar .blank:nth-child(32):after,
+.progressbar .blank:nth-child(33):after,
+.progressbar .blank:nth-child(34):after,
+.progressbar .blank:nth-child(41):after,
+.progressbar .blank:nth-child(42):after,
+.progressbar .blank:nth-child(43):after,
+.progressbar .blank:nth-child(44):after,
+.progressbar .blank:nth-child(51):after,
+.progressbar .blank:nth-child(52):after,
+.progressbar .blank:nth-child(53):after,
+.progressbar .blank:nth-child(54):after
+{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 10px;
+	background:#999;	
+	top: 15px;
+	z-index: -1;
+}
+.progressbar .fill:nth-child(1):after,
+.progressbar .fill:nth-child(2):after,
+.progressbar .fill:nth-child(3):after,
+.progressbar .fill:nth-child(4):after,
+.progressbar .fill:nth-child(21):after,
+.progressbar .fill:nth-child(22):after,
+.progressbar .fill:nth-child(23):after,
+.progressbar .fill:nth-child(24):after,
+.progressbar .fill:nth-child(11):after,
+.progressbar .fill:nth-child(12):after,
+.progressbar .fill:nth-child(13):after,
+.progressbar .fill:nth-child(14):after,
+.progressbar .fill:nth-child(31):after,
+.progressbar .fill:nth-child(32):after,
+.progressbar .fill:nth-child(33):after,
+.progressbar .fill:nth-child(34):after,
+.progressbar .fill:nth-child(41):after,
+.progressbar .fill:nth-child(42):after,
+.progressbar .fill:nth-child(43):after,
+.progressbar .fill:nth-child(44):after,
+.progressbar .fill:nth-child(51):after,
+.progressbar .fill:nth-child(52):after,
+.progressbar .fill:nth-child(53):after,
+.progressbar .fill:nth-child(54):after
+{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 10px;
+	background:green;	
+	top: 15px;
+	z-index: -1;
+}
+
+.progressbar .blank:nth-child(5):after,
+.progressbar .blank:nth-child(15):after,
+.progressbar .blank:nth-child(25):after,
+.progressbar .blank:nth-child(35):after,
+.progressbar .blank:nth-child(45):after,
+.progressbar .blank:nth-child(55):after
+{
+content: '';
+position: absolute;
+width: 260px;
+height:260px;
+border: 10px solid #999;
+border-radius: 50%;
+transform: rotate(-133deg);
+border-top-color: transparent;
+border-right-color: transparent;
+top: 15px;
+left: -12px;
+}
+
+.progressbar .fill:nth-child(5):after,
+.progressbar .fill:nth-child(15):after,
+.progressbar .fill:nth-child(25):after,
+.progressbar .fill:nth-child(35):after,
+.progressbar .fill:nth-child(45):after,
+.progressbar .fill:nth-child(55):after
+{
+content: '';
+position: absolute;
+width: 260px;
+height:260px;
+border: 10px solid green;
+border-radius: 50%;
+transform: rotate(-133deg);
+border-top-color: transparent;
+border-right-color: transparent;
+top: 15px;
+left: -12px;
+}
+.progressbar .blank:nth-child(7):after,
+.progressbar .blank:nth-child(8):after,
+.progressbar .blank:nth-child(17):after,
+.progressbar .blank:nth-child(18):after,
+.progressbar .blank:nth-child(27):after,
+.progressbar .blank:nth-child(28):after,
+.progressbar .blank:nth-child(37):after,
+.progressbar .blank:nth-child(38):after,
+.progressbar .blank:nth-child(47):after,
+.progressbar .blank:nth-child(48):after,
+.progressbar .blank:nth-child(57):after,
+.progressbar .blank:nth-child(58):after
+{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 10px;
+	background:#999;	
+	top: 15px;
+	z-index: -1;	
+}
+
+.progressbar .blank:nth-child(9):after,
+.progressbar .blank:nth-child(19):after,
+.progressbar .blank:nth-child(29):after,
+.progressbar .blank:nth-child(39):after,
+.progressbar .blank:nth-child(49):after,
+.progressbar .blank:nth-child(59):after{
+	content: '';
+	position: absolute;
+	width: 200%;
+	height: 10px;
+	background:#999;	
+	top: 15px;
+	left: -90px;
+	z-index: -1;
+}
+
+
+.progressbar .blank:nth-child(10):after,
+.progressbar .blank:nth-child(20):after,
+.progressbar .blank:nth-child(30):after,
+.progressbar .blank:nth-child(40):after,
+.progressbar .blank:nth-child(50):after,
+.progressbar .blank:nth-child(60):after{
+	content: '';
+position: absolute;
+width: 272px;
+height:260px;
+border: 10px solid #999;
+border-radius: 50%;
+transform: rotate(-133deg);
+border-bottom-color: transparent;
+border-left-color: transparent;
+top: 18px;
+left: -48px;
+}
+
+.progressbar .fill:nth-child(7):after,
+.progressbar .fill:nth-child(8):after,
+.progressbar .fill:nth-child(17):after,
+.progressbar .fill:nth-child(18):after,
+.progressbar .fill:nth-child(27):after,
+.progressbar .fill:nth-child(28):after,
+.progressbar .fill:nth-child(37):after,
+.progressbar .fill:nth-child(38):after,
+.progressbar .fill:nth-child(47):after,
+.progressbar .fill:nth-child(48):after,
+.progressbar .fill:nth-child(57):after,
+.progressbar .fill:nth-child(58):after
+{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 10px;
+	background:green;	
+	top: 15px;
+	z-index: -1;	
+}
+
+.progressbar .fill:nth-child(9):after,
+.progressbar .fill:nth-child(19):after,
+.progressbar .fill:nth-child(29):after,
+.progressbar .fill:nth-child(39):after,
+.progressbar .fill:nth-child(49):after,
+.progressbar .fill:nth-child(59):after{
+	content: '';
+	position: absolute;
+	width: 200%;
+	height: 10px;
+	background:green;	
+	top: 15px;
+	left: -90px;
+	z-index: -1;
+}
+
+
+.progressbar .fill:nth-child(10):after,
+.progressbar .fill:nth-child(20):after,
+.progressbar .fill:nth-child(30):after,
+.progressbar .fill:nth-child(40):after,
+.progressbar .fill:nth-child(50):after,
+.progressbar .fill:nth-child(60):after{
+	content: '';
+position: absolute;
+width: 272px;
+height:260px;
+border: 10px solid green;
+border-radius: 50%;
+transform: rotate(-133deg);
+border-bottom-color: transparent;
+border-left-color: transparent;
+top: 18px;
+left: -48px;
+}
+
+@media only screen and (max-width: 768px) {
+ 
+.progressbar li:nth-child(5):after,
+.progressbar li:nth-child(15):after,
+.progressbar li:nth-child(25):after,
+.progressbar li:nth-child(35):after,
+.progressbar li:nth-child(45):after,
+.progressbar li:nth-child(55):after
+{
+left: -72px;
+}
+
+.progressbar li:nth-child(6),
+.progressbar li:nth-child(7),
+.progressbar li:nth-child(8),
+.progressbar li:nth-child(9),
+.progressbar li:nth-child(10)
+{
+    top: 115px;
+}
+
+
+.progressbar li:nth-child(9):after,
+.progressbar li:nth-child(19):after,
+.progressbar li:nth-child(29):after,
+.progressbar li:nth-child(39):after,
+.progressbar li:nth-child(49):after,
+.progressbar li:nth-child(59):after{
+	left: -40px;
+}
+
+.progressbar li:nth-child(10):after,
+.progressbar li:nth-child(20):after,
+.progressbar li:nth-child(30):after,
+.progressbar li:nth-child(40):after,
+.progressbar li:nth-child(50):after,
+.progressbar li:nth-child(60):after{
+left: -110px;
+}
+
+
+.progressbar li:nth-child(11),
+.progressbar li:nth-child(12),
+.progressbar li:nth-child(13),
+.progressbar li:nth-child(14),
+.progressbar li:nth-child(15){
+    top: 235px;
+}
+.progressbar li:nth-child(16),
+.progressbar li:nth-child(17),
+.progressbar li:nth-child(18),
+.progressbar li:nth-child(19),
+.progressbar li:nth-child(20){
+    top: 345px;
+}
+
+.progressbar li:nth-child(21),
+.progressbar li:nth-child(22),
+.progressbar li:nth-child(23),
+.progressbar li:nth-child(24),
+.progressbar li:nth-child(25){
+	top: 464px;
+}
+
+.progressbar li:nth-child(26),
+.progressbar li:nth-child(27),
+.progressbar li:nth-child(28),
+.progressbar li:nth-child(29),
+.progressbar li:nth-child(30){
+    top: 575px;
+}
+
+.progressbar li:nth-child(31),
+.progressbar li:nth-child(32),
+.progressbar li:nth-child(33),
+.progressbar li:nth-child(34),
+.progressbar li:nth-child(35){
+    top: 692px;
+}
+
+.progressbar li:nth-child(36)
+{
+    top: 834px;
+}
+
+/*.progressbar li:nth-child(36),*/
+.progressbar li:nth-child(37),
+.progressbar li:nth-child(38),
+.progressbar li:nth-child(39),
+.progressbar li:nth-child(40){
+    top: 804px;
+}
+.progressbar li:nth-child(41),
+.progressbar li:nth-child(42),
+.progressbar li:nth-child(43),
+.progressbar li:nth-child(44),
+.progressbar li:nth-child(45){
+    top: 922px;
+}
+
+.progressbar li:nth-child(46){
+	top:1060px;
+}
+
+.progressbar li:nth-child(47),
+.progressbar li:nth-child(48),
+.progressbar li:nth-child(49),
+.progressbar li:nth-child(50){
+    top: 1032px;
+}
+
+.progressbar li:nth-child(51),
+.progressbar li:nth-child(52),
+.progressbar li:nth-child(53),
+.progressbar li:nth-child(54),
+.progressbar li:nth-child(55){
+    top: 1150px;
+}
+.progressbar li:nth-child(56),
+.progressbar li:nth-child(57),
+.progressbar li:nth-child(58),
+.progressbar li:nth-child(59),
+.progressbar li:nth-child(60){
+    top: 1260px;
+}
+
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 766px) {
+	.progressbar li:nth-child(5):after,
+.progressbar li:nth-child(15):after,
+.progressbar li:nth-child(25):after,
+.progressbar li:nth-child(35):after,
+.progressbar li:nth-child(45):after,
+.progressbar li:nth-child(55):after
+{
+left: -55px;
+}
+
+.progressbar li:nth-child(6),
+.progressbar li:nth-child(7),
+.progressbar li:nth-child(8),
+.progressbar li:nth-child(9),
+.progressbar li:nth-child(10)
+{
+    top: 145px;
+}
+
+
+.progressbar li:nth-child(9):after,
+.progressbar li:nth-child(19):after,
+.progressbar li:nth-child(29):after,
+.progressbar li:nth-child(39):after,
+.progressbar li:nth-child(49):after,
+.progressbar li:nth-child(59):after{
+	left: -45px;
+}
+
+.progressbar li:nth-child(10):after,
+.progressbar li:nth-child(20):after,
+.progressbar li:nth-child(30):after,
+.progressbar li:nth-child(40):after,
+.progressbar li:nth-child(50):after,
+.progressbar li:nth-child(60):after{
+left: -90px;
+}
+
+
+.progressbar li:nth-child(11),
+.progressbar li:nth-child(12),
+.progressbar li:nth-child(13){
+	top: 295px;
+}
+.progressbar li:nth-child(14),
+.progressbar li:nth-child(15){
+    top: 265px;
+}
+.progressbar li:nth-child(16),
+.progressbar li:nth-child(17),
+.progressbar li:nth-child(18),
+.progressbar li:nth-child(19),
+.progressbar li:nth-child(20){
+    top: 410px;
+}
+
+.progressbar li:nth-child(21){
+	top: 560px;
+}
+.progressbar li:nth-child(22),
+.progressbar li:nth-child(23),
+.progressbar li:nth-child(24),
+.progressbar li:nth-child(25){
+	top: 530px;
+}
+
+.progressbar li:nth-child(26),
+.progressbar li:nth-child(27),
+.progressbar li:nth-child(28),
+.progressbar li:nth-child(29),
+.progressbar li:nth-child(30){
+    top: 675px;
+}
+
+.progressbar li:nth-child(31),
+.progressbar li:nth-child(32){
+	top: 825px
+}
+.progressbar li:nth-child(33),
+.progressbar li:nth-child(34),
+.progressbar li:nth-child(35){
+    top: 796px;
+}
+
+.progressbar li:nth-child(36)
+{
+    top: 940px;
+}
+
+/*.progressbar li:nth-child(36),*/
+.progressbar li:nth-child(37),
+.progressbar li:nth-child(38),
+.progressbar li:nth-child(39),
+.progressbar li:nth-child(40){
+    top: 910px;
+}
+.progressbar li:nth-child(41),
+.progressbar li:nth-child(42),
+.progressbar li:nth-child(43),
+.progressbar li:nth-child(44),
+.progressbar li:nth-child(45){
+    top: 1060px;
+}
+
+.progressbar li:nth-child(46){
+	top:1205px;
+}
+
+.progressbar li:nth-child(47),
+.progressbar li:nth-child(48),
+.progressbar li:nth-child(49),
+.progressbar li:nth-child(50){
+    top: 1173px;
+}
+
+.progressbar li:nth-child(51),
+.progressbar li:nth-child(52),
+.progressbar li:nth-child(53),
+.progressbar li:nth-child(54),
+.progressbar li:nth-child(55){
+    top: 1295px;
+}
+.progressbar li:nth-child(56),
+.progressbar li:nth-child(57),
+.progressbar li:nth-child(58),
+.progressbar li:nth-child(59),
+.progressbar li:nth-child(60){
+    top: 1440px;
+}
+
+}

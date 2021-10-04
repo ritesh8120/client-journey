@@ -5,105 +5,302 @@ if (!isset($_SESSION["id"])) {
 }
 date_default_timezone_set('America/Los_Angeles');
 include('config.php');
+function getnumofrow($Audience, $type)
+{
+	include('config.php');
+	$sql = "SELECT * FROM client_info WHERE `Audience`='$Audience' and `type`='$type'";
+	$query = mysqli_query($conn, $sql);
+	$row = mysqli_num_rows($query);
+	return $row;
+}
 ?>
-<!DOCTYPE html>
-<html>
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Oswald');
 
-<head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<title>Level</title>
-	<link rel="stylesheet" type="text/css" href="image.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-	<style>
-		* {
-			padding: 0;
-			margin: 0;
-		}
+	* {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		box-sizing: border-box
+	}
 
-		.container {
+	body {
+		background-color: #dadde6;
+		font-family: arial
+	}
+
+	.fl-left {
+		float: left
+	}
+
+	.fl-right {
+		float: right
+	}
+
+	.container {
+		width: 90%;
+		margin: 100px auto
+	}
+
+	h1 {
+		text-transform: uppercase;
+		font-weight: 900;
+		border-left: 10px solid #fec500;
+		padding-left: 10px;
+		margin-bottom: 30px
+	}
+
+	.row {
+		overflow: hidden
+	}
+
+	.card {
+		display: table-row;
+		width: 49%;
+		/* background-color: #222; */
+		border: 1px solid #000;
+		color: #989898;
+		margin: 20px 0;
+		font-family: 'Oswald', sans-serif;
+		text-transform: uppercase;
+		border-radius: 4px;
+		position: relative
+	}
+
+	.card+.card {
+		margin-left: 2%
+	}
+
+	.date {
+		display: table-cell;
+		width: 25%;
+		position: relative;
+		text-align: center;
+		border-right: 3px dashed #000;
+	}
+
+	.date:before,
+	.date:after {
+		content: "";
+		display: block;
+		width: 30px;
+		height: 30px;
+		background-color: #000;
+		position: absolute;
+		top: -15px;
+		right: -15px;
+		z-index: 1;
+		border-radius: 50%
+	}
+
+	.date:after {
+		top: auto;
+		bottom: -15px
+	}
+
+	.date time {
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%)
+	}
+
+	.date time span {
+		display: block
+	}
+
+	.date time span:first-child {
+		color: #000;
+		font-weight: 600;
+		font-size: 250%
+	}
+
+	.date time span:last-child {
+		text-transform: uppercase;
+		font-weight: 600;
+		color: black;
+		margin-top: -10px
+			/* color:#000; */
+	}
+
+	.card-cont {
+		display: table-cell;
+		width: 75%;
+		font-size: 85%;
+		padding: 10px 10px 30px 50px;
+	}
+
+	.card-cont h3 {
+		color: #000;
+		font-weight: 600;
+		font-size: 150%;
+	}
+
+
+	.card-cont>div {
+		display: table-row
+	}
+
+	.card-cont .even-date i,
+	.card-cont .even-info i,
+	.card-cont .even-date time,
+	.card-cont .even-info p {
+		display: table-cell
+	}
+
+	.card-cont .even-date i,
+	.card-cont .even-info i {
+		padding: 5% 5% 0 0
+	}
+
+	.card-cont .even-info p {
+		padding: 30px 50px 0 0
+	}
+
+	.card-cont .even-date time span {
+		display: block
+	}
+
+	.card-cont a {
+		display: block;
+		text-decoration: none;
+		width: 80px;
+		height: 30px;
+		color: #fff;
+		font-size: 150%;
+		background-color: 000;
+		text-align: center;
+		line-height: 30px;
+		border-radius: 2px;
+		position: absolute;
+		right: 10px;
+		bottom: 10px
+	}
+
+	.card-cont a:hover {
+		text-decoration: none;
+		color: #fff;
+	}
+
+	.btns {
+		border: 2px solid #000;
+		color: #000;
+		font-size: 20px;
+		font-weight: 600;
+		padding: 5px 10px;
+		width: 120px !important;
+		border-radius: 5px;
+		text-decoration: none;
+	}
+
+	.btns:hover {
+		text-decoration: none;
+		color: #000;
+	}
+
+	@media screen and (max-width: 860px) {
+		.card {
+			display: block;
+			float: none;
 			width: 100%;
-			padding-top: 50px;
+			margin-bottom: 10px
 		}
-	</style>
-</head>
 
-<body>
-	<div class="float-right" style="margin: 116px;"><a id="log" href="logout"><i class="fas fa-sign-out-alt"></i> Logout </a></div>
-	<div class="container">
-		<img src="manas.png" class="img-fluid" width="800"><br><br><br>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		.card+.card {
+			margin-left: 0
+		}
 
-		<svg width="600" height="180">
-			<a href="connectionAudience">
-				<rect width="20" height="20" style="fill:#b8daff;stroke-width:3;" />
-				<?php
-				$sqls = "SELECT * FROM client_info WHERE `Audience`='0'";
-				$querys = mysqli_query($conn, $sqls);
-				$rowa = mysqli_num_rows($querys);
-				?>
-				<text x="30" y="15"> Level 0 - Sent Friend Request/ Connection Request/ Welcome Message</text><text x="535" y="15" style="font-weight: bold;">(<?= $rowa ?>)</text>
-			</a>
-			</a>
-			<a href="coldAudience">
-				<rect width="20" height="20" y="30" style="fill:#b8daff;stroke-width:3;" />
-				<?php
-				$sql1s = "SELECT * FROM client_info WHERE `Audience`='1' and `type`='yoga'";
-				$query1s = mysqli_query($conn, $sql1s);
-				$rowss = mysqli_num_rows($query1s);
-				?>
-				<text x="30" y="45"> Level 1 - Cold Audience/ Want Info/ Educate </text><text x="535" y="45" style="font-weight: bold;">(<?= $rowss ?>)</text>
-			</a>
-			</a>
-			<?php
-			$sql2s = "SELECT * FROM client_info WHERE `Audience`='2' and `type`='yoga'";
-			$query2s = mysqli_query($conn, $sql2s);
-			$row2s = mysqli_num_rows($query2s);
-			?>
-			<a href="interestedAudience">
-				<rect width="20" height="20" y="60" style="fill:#ff9900;stroke-width:3;" />
-				<text x="30" y="75">Level 2 - Interested Audience </text><text x="530" y="75" style="font-weight: bold;">(<?= $row2s ?>)</text>
-			</a>
-			<?php
-			$sql3s = "SELECT * FROM client_info WHERE `Audience`='3' and `type`='yoga'";
-			$query3s = mysqli_query($conn, $sql3s);
-			$row3s = mysqli_num_rows($query3s);
-			?>
-			<a href="warmAudience">
-				<rect width="20" height="20" y="90" style="fill:#ffeeba;stroke-width:3;" />
-				<text x="30" y="105"> Level 3 - Warm Audience / Had Interaction/Ready For Call </text><text x="530" y="105" style="font-weight: bold;">(<?= $row3s ?>)</text>
-			</a>
-			<?php
-			$sql4s = "SELECT * FROM client_info WHERE `Audience`='4' and `type`='yoga'";
-			$query4s = mysqli_query($conn, $sql4s);
-			$row4s = mysqli_num_rows($query4s);
-			?>
-			<a href="hotAudience">
-				<rect width="20" height="20" y="120" style="fill:#c3e6cb;stroke-width:3;" />
-				<text x="30" y="135"> Level 4 - Hot Audience /Ready For Offer </text><text x="530" y="135" style="font-weight: bold;">(<?= $row4s ?>)</text>
-			</a>
-			<?php
-			$sql5s = "SELECT * FROM client_info WHERE `Audience`='5' and `type`='yoga'";
-			$query5s = mysqli_query($conn, $sql5s);
-			$row5s = mysqli_num_rows($query5s);
-			?>
-			<a href="matchAudience">
-				<rect width="20" height="20" y="150" style="fill:#f5c6cb;stroke-width:3;" />
-				<text x="30" y="165"> Level 5 - No Match </text><text x="530" y="165" style="font-weight: bold;">(<?= $row5s ?>)</text>
-			</a>
-		</svg>
-		<br>
-		<center>
-			<a class="btn btn-info" style="width:120px;" href="home">Home</a>
-			<a class="btn btn-info" style="width:120px;" href="allAudience">Show All</a>
-			<a class="btn btn-info" style="width:120px;" href="login">Add New</a>
-			<a class="btn btn-info" style="width:120px;" href="coachnotes">Admin Notes</a>
-		</center>
+		.card-cont .even-date,
+		.card-cont .even-info {
+			font-size: 75%
+		}
+	}
+</style>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<section class="container">
+	<div style="float:right;margin:20px;"><a id="log" class="btns" href="logout"><i class="fas fa-sign-out-alt"></i> Logout </a></div>
+	<center><img src="manas.png" class="img-fluid" width="800"></center><br>
+	<a class="btns" href="home">Home</a>
+	<a class="btns" href="allAudience">Show All</a>
+	<a class="btns" href="login">Add New</a>
+	<a class="btns" href="coachnotes">Admin Notes</a>
+	<h1>Levels </h1>
+	<div class="row">
+		<article class="card fl-left" style="background-color:#ccc;">
+			<section class="date">
+				<time datetime="23th feb">
+					<span>0</span><span>Level</span>
+				</time>
+			</section>
+			<section class="card-cont">
+				<h3>Sent Friend Request/ Connection Request/ Welcome Message</h3>
+				<a href="connectionAudience"><?= getnumofrow('0', ''); ?></a>
+			</section>
+		</article>
+		<article class="card fl-left" style="background-color:#b8daff;">
+			<section class="date">
+				<time datetime="23th feb">
+					<span>1</span><span>Level</span>
+				</time>
+			</section>
+			<section class="card-cont">
+				<h3 style="padding:0 15px 20px 0;">Cold Audience/ Want Info/ Educate</h3>
+				<a href="coldAudience"><?= getnumofrow('1', 'yoga'); ?></a>
+			</section>
+		</article>
+	</div>
+	<div class="row">
+		<article class="card fl-left" style="background-color:#ff9900;">
+			<section class="date">
+				<time datetime="23th feb">
+					<span>2</span><span>Level</span>
+				</time>
+			</section>
+			<section class="card-cont">
+				<h3 style="padding:0 155px 20px 0 ;">Interested Audience</h3>
+				<a href="interestedAudience"><?= getnumofrow('2', 'yoga'); ?></a>
+			</section>
+		</article>
+		<article class="card fl-left" style="background-color:#ffeeba;">
+			<section class="date">
+				<time datetime="23th feb">
+					<span>3</span><span>Level</span>
+				</time>
+			</section>
+			<section class="card-cont">
+				<h3>Warm Audience / Had Interaction/Ready For Call</h3>
+				<a href="warmAudience"><?= getnumofrow('3', 'yoga'); ?></a>
+			</section>
+		</article>
+	</div>
+	<div class="row">
+		<article class="card fl-left" style="background-color:#c3e6cb;">
+			<section class="date">
+				<time datetime="23th feb">
+					<span>4</span><span>Level</span>
+				</time>
+			</section>
+			<section class="card-cont">
+				<h3 style="padding:0 40px 20px 0 ;">Hot Audience /Ready For Offer</h3>
+				<a href="hotAudience"><?= getnumofrow('4', 'yoga'); ?></a>
+			</section>
+		</article>
+		<article class="card fl-left" style="background-color:#f5c6cb;">
+			<section class="date">
+				<time datetime="23th feb">
+					<span>5</span><span>Level</span>
+				</time>
+			</section>
+			<section class="card-cont">
+				<h3 style="padding:0 270px 20px 0 ;">No Match<br></h3>
+				<a href="matchAudience"><?= getnumofrow('5', 'yoga'); ?></a>
+			</section>
+		</article>
 	</div>
 	</div>
-</body>
-
-</html>

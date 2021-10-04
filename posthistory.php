@@ -18,21 +18,22 @@ if ($historyMember->num_rows > 0) {
     while ($history = $historyMember->fetch_assoc()) {
 
         $listView .= "<tr>
-
-							<td width='100' >" . $i . "</td>
-
-                            <td width='200'>" . date("m/d/Y", strtotime($history['fld_date'])) . "</td>
-
-                            <td width='500'>" . nl2br($history['title']) . "</td>
-                            <td width='500'>" . nl2br($history['historyNotes']) . "</td>
-                            <td width='500'><img src='" . nl2br($history['postcontent']) . "' width='100px'></td>
-                            <td width='500'>" . nl2br($history['comment']) . "</td>
-
-                            <td width='100'><button onclick='getnotes(" . $history['fld_id'] . ")' class='btn btn-success editbtn'>Edit</button></td>
-
-                            <td width='100'><button onclick='deletenoted(" . $history['fld_id'] . ")' class='btn btn-danger' >Delete</button></td>
-
-                        </tr>";
+                    <td width='100'>" . $i . "</td>
+                    <td width='200'>" . date("m/d/Y", strtotime($history['fld_date'])) . "</td>
+                    <td width='500'>" . nl2br($history['abouttitle']) . "</td>
+                    <td width='500'>" . nl2br($history['contenttext']) . "</td>
+                    <td width='500'><a href='" . nl2br($history['contentLink']) . "' target='_blank'>" . nl2br($history['contentLink']) . "</a></td>
+                    <td width='500'>" . nl2br($history['comment']) . "</td>
+                    <td width='500'><img alt='Image Not Found' src='" . $history['Contentimage'] . "' width='100'></td>
+                    <td width='500'><video width='120' height='90' controls>
+                        <source src='" . $history['Contentvideo'] . "' type='video/mp4'>
+                        <source src='" . $history['Contentvideo'] . "' type='video/ogg'>
+                        Your browser does not support the video tag.
+                        </video>
+                    </td>
+                    <td width='100'><button onclick='getnotes(" . $history['fld_id'] . ")' class='btn btn-success editbtn'>Edit</button></td>
+                    <td width='100'><button onclick='deletenoted(" . $history['fld_id'] . ")' class='btn btn-danger' >Delete</button></td>
+                    </tr>";
 
         $i--;
     }
@@ -121,47 +122,58 @@ if ($historyMember->num_rows > 0) {
             <form class="form-horizontal" id="posthistory">
                 <div class="panel panel-default">
                     <div class="panel-heading">
+                        <h4 class="panel-title">Complete By Day</h4>
                     </div><br>
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="col-md-12 col-xs-12 control-label">Complete by Day</label>
-                            <div class="col-md-12 col-xs-12">
-                                <div class="input-group">
-                                    <span class="input-group-addon bg-info">
-                                        <span class="fa fa-calendar p-2"></span>
-                                    </span>
-                                    <input type="text" class="form-control" value="<?php echo date("m/d/Y"); ?>" required disabled style="color: #ccc;">
-                                </div>
+                            <label>Date</label>
+                            <div class="input-group">
+                                <span class="input-group-addon bg-info">
+                                    <span class="fa fa-calendar p-2"></span>
+                                </span>
+                                <input type="text" class="form-control" value="<?php echo date("m/d/Y"); ?>" required disabled style="color: #ccc;">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 col-xs-12 control-label">About/Title</label>
-                            <div class="col-md-12 col-xs-12">
-                                <input type="text" name="title2" class="form-control" id="title2">
+                            <label>About/Title</label>
+                            <div>
+                                <input type="text" name="abouttitle" class="form-control" id="abouttitle">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12 col-xs-12 control-label">Post Content (Link, Text)</label>
-                            <div class="col-md-12 col-xs-12">
-                                <textarea name="historyNotes" id="historyNotes" class="form-control" rows="5"></textarea>
+                            <label class="col-md-12 col-xs-12 control-label">Post Content/Text</label>
+                            <div>
+                                <textarea name="contenttext" id="contenttext" class="form-control" rows="2"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12 col-xs-12 control-label">Post Content (video,Image)</label>
-                            <div class="col-md-12 col-xs-12">
-                                <input class="form-control" type="file" id="postcontent" name="postcontent">
+                            <label class="col-md-12 col-xs-12 control-label">Post Content/Link</label>
+                            <div>
+                                <textarea name="contentLink" id="contentLink" class="form-control" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12 col-xs-12 control-label">Post Content/video</label>
+                            <div>
+                                <input class="form-control" type="file" id="Contentvideo" name="Contentvideo">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12 col-xs-12 control-label">Post Content/Image</label>
+                            <div>
+                                <input class="form-control" type="file" id="Contentimage" name="Contentimage">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-12 col-xs-12 control-label"> Comment Details</label>
-                            <div class="col-md-12 col-xs-12">
-                                <input type="text" name="comment" class="form-control" id="comment">
+                            <div>
+                                <textarea name="comment" id="comment" class="form-control" rows="2"></textarea>
                             </div>
                         </div>
-                        <input type="hidden" value="<?php echo $id; ?>" name="cid">
+                        <input type="hidden" value="<?php echo $id; ?>" name="user_id">
                         <div class="form-group">
-                            <div class="col-md-12 col-xs-12">
-                                <input class="btn btn-primary" type="submit" value="Save Notes" id="addHistory"><br>
+                            <div>
+                                <input class="btn btn-primary" type="submit" value="Save Notes"><br>
                             </div>
                         </div>
                     </div>
@@ -170,7 +182,7 @@ if ($historyMember->num_rows > 0) {
         </div>
         <?php
 
-        $result = $conn->query("SELECT * FROM `next_action` WHERE `user_id`='$id'");
+        $result = $conn->query("SELECT * FROM `post_next_action` WHERE `user_id`='$id'");
         $row = $result->fetch_assoc();
 
         if ($row['status'] == 0) {
@@ -180,47 +192,91 @@ if ($historyMember->num_rows > 0) {
         }
         ?>
         <div class="col-md-6">
-            <form class="form-horizontal">
+            <form class="form-horizontal" id="nextaction">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Next Action</h3>
-                    </div>
-                    <div class="check">
-                        <label class="check1">
-                            <input type="checkbox" <?= $checked ?> value="<?php echo $id; ?>" id="rememberMe">
-                            <span class="checkmark"></span>
-                        </label>
+                        <h4 class="panel-title">Next Action</h4>
+
+                        <div class="check">
+                            <label class="check1">
+                                <input type="checkbox" <?= $checked ?> value="<?php echo $id; ?>" id="rememberMe">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <div class="form-group">
                             <label class="col-md-12 col-xs-12 control-label">Due Date</label>
-                            <div class="col-md-12 col-xs-12">
+                            <div>
                                 <div class="input-group">
                                     <span class="input-group-addon bg-info">
                                         <span class="fa fa-calendar p-2"></span>
                                     </span>
-                                    <?php if ($row['date'] != "") { ?>
-                                        <input type="date" class="form-control" id="date" required style="color: #000;" value="<?php echo date("Y-m-d", strtotime($row['date'])); ?>">
+                                    <?php if ($row['fld_date'] != "") { ?>
+                                        <input type="date" class="form-control" id="date" name="fld_date" required style="color: #000;" value="<?php echo date("Y-m-d", strtotime($row['fld_date'])); ?>">
                                     <?php } else { ?>
-                                        <input type="date" class="form-control" id="date" value="<?php echo date("Y-m-d"); ?>" required style="color: #000;">
+                                        <input type="date" class="form-control" name="fld_date" id="date" value="<?php echo date("Y-m-d"); ?>" required style="color: #000;">
                                     <?php } ?>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 col-xs-12 control-label">Title</label>
-                            <div class="col-md-12 col-xs-12">
-                                <input type="text" name="title" class="form-control" id="titles" value="<?php echo $row['title'] ?>">
+                            <label>About/Title</label>
+                            <div>
+                                <input type="text" name="abouttitle" class="form-control" id="abouttitle" value="<?= $row['abouttitle']; ?>">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 col-xs-12 control-label">Notes</label>
-                            <div class="col-md-12 col-xs-12">
-                                <textarea name="nextnotes" id="nextnotes" data-id="<?php echo $id; ?>" class="form-control" rows="5"><?= $row['next_notes'] ?></textarea>
+                            <label class="col-md-12 col-xs-12 control-label">Post Content/Text</label>
+                            <div>
+                                <textarea name="contenttext" id="contenttext" class="form-control" rows="2"><?= $row['contenttext']; ?></textarea>
                             </div>
                         </div>
-                        <input type="submit" id="nextnotessubmit" value="Save" class="btn btn-primary">
-                        <?php if ($row['date'] != "") { ?>
+                        <div class="form-group">
+                            <label class="col-md-12 col-xs-12 control-label">Post Content/Link</label>
+                            <div>
+                                <textarea name="contentLink" id="contentLink" class="form-control" rows="2"><?= $row['contentLink']; ?></textarea>
+                            </div>
+                        </div>
+                        <?php if ($row['status'] == 0) { ?>
+                            <div class="form-group">
+                                <label class="col-md-12 col-xs-12 control-label">Post Content/video</label>
+                                <div>
+                                    <input class="form-control" type="file" id="Contentvideo" name="Contentvideo" value="<?= $row['Contentvideo']; ?>">
+                                </div>
+                            </div>
+                        <?php } else {
+                            echo '<div class="form-group">
+                                    <label class="col-md-12 col-xs-12 control-label">Post Content/video</label>
+                                    <video width="100" height="40" controls>
+                        <source src="' . $row['Contentvideo'] . ' " type="ideo/mp4">
+                        <source src="' . $row['Contentvideo'] . '" type="video/ogg">
+                        Your browser does not support the video tag.
+                        </video>
+                                </div>';
+                        } ?>
+                        <?php if ($row['status'] == 0) { ?>
+                            <div class="form-group">
+                                <label class="col-md-12 col-xs-12 control-label">Post Content/Image</label>
+                                <div>
+                                    <input class="form-control" type="file" id="Contentimage" name="Contentimage">
+                                </div>
+                            </div>
+                        <?php } else {
+                            echo '<div class="form-group">
+                            <label class="col-md-12 col-xs-12 control-label">Post Content/Image</label>
+                            <img src="' . $row['Contentimage'] . '" width="100" heigth="40" alt="Image Not fond">
+                            </div>';
+                        } ?>
+                        <div class="form-group">
+                            <label class="col-md-12 col-xs-12 control-label"> Comment Details</label>
+                            <div>
+                                <textarea name="comment" id="comment" class="form-control" rows="2"><?= $row['comment']; ?></textarea>
+                            </div>
+                            <input type="hidden" value="<?php echo $id; ?>" name="user_id">
+                        </div>
+                        <input type="submit" value="Save Action" class="btn btn-primary">
+                        <?php if ($row['fld_date'] != "") { ?>
                             <input type="button" name="delete" id="nextnotes_delet" data-id="<?php echo $id; ?>" value="Delete" class="btn btn-danger float-right">
                         <?php } ?>
                     </div>
@@ -236,8 +292,10 @@ if ($historyMember->num_rows > 0) {
                 <th>No</th>
                 <th>Date</th>
                 <th>About/Title</th>
-                <th>Post Content (Link, Text)</th>
-                <th>Post Content (video,Image)</th>
+                <th>Post Content/Text</th>
+                <th>Post Content/Link</th>
+                <th>Post Content/video</th>
+                <th>Post Content/Image</th>
                 <th>Comment Details</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -255,16 +313,12 @@ if ($historyMember->num_rows > 0) {
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit Nots</h4>
+                    <h4 class="modal-title">Edit Notes</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <input type="hidden" name="" id="notes_id">
-                    <div class="form-group"><input type="text" id="title3" class="form-control"></div>
-                    <div class="form-group">
-                        <textarea style="width: 100%" id="notes"></textarea>
-                    </div>
+
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
@@ -296,20 +350,16 @@ if ($historyMember->num_rows > 0) {
                 });
         });
 
-        $('#nextnotessubmit').click(function() {
-            var next_id = $('#nextnotes').attr('data-id');
-            var val = $('#nextnotes').val();
-            var date = $("#date").val();
-            var title = $('#titles').val();
+        $('#nextaction').submit(function(e) {
+            e.preventDefault();
             $.ajax({
-                url: "history_notes",
-                data: {
-                    "next_id": next_id,
-                    "val": val,
-                    "date": date,
-                    "title": title
-                },
+                url: "nextactionpost",
                 type: "POST",
+                dataType: "html",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
                 success: function(data) {
                     location.reload(true);
                 }
@@ -319,10 +369,10 @@ if ($historyMember->num_rows > 0) {
         $('#nextnotes_delet').click(function() {
             var clients_id = $(this).attr('data-id');
             $.ajax({
-                url: "history_notes",
+                url: "nextactionpost",
                 data: {
                     "clients_id": clients_id,
-                    'delete': 'Delete'
+                    'delete': 'delete'
                 },
                 type: "POST",
                 dataType: "html",
@@ -367,16 +417,21 @@ if ($historyMember->num_rows > 0) {
     }
 
     function getnotes(notesd_id) {
-        $('#notes_id').val(notesd_id);
-        $.post("history_notes", {
-                notesd_id: notesd_id
+        var notesd_ids = notesd_id;
+        // var notes_id = $('#notes_id').val(notesd_id);
+        $.ajax({
+            url: "history_notes_select",
+            type: "POST",
+            dataType: "html",
+            data: {
+                notes_id: notesd_ids
             },
-            function(data, status) {
-                var user = JSON.parse(data);
-                $('#notes').val(user.notes);
-                $('#title3').val(user.title);
-            });
-        $('#myModal').modal('show');
+            success: function(data, status) {
+                // location.reload(true);
+                $('.modal-body').html(data);
+                $('#myModal').modal('show');
+            }
+        });
     }
 
     function updatedetail() {

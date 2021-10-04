@@ -38,7 +38,8 @@ if (isset($_SESSION["id"])) {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 400px;
+      width: 600px;
+      height: 500px;
       padding: 40px;
       background: rgba(0, 0, 0, .8);
       box-sizing: border-box;
@@ -46,11 +47,8 @@ if (isset($_SESSION["id"])) {
       border-radius: 10px;
     }
 
-    .box h2 {
-      margin: 0 0 30px;
-      padding: 0;
-      color: #fff;
-      text-align: center;
+    .box img {
+      margin: -113px 200px 113px;
     }
 
     .box .inputBox {
@@ -59,7 +57,7 @@ if (isset($_SESSION["id"])) {
 
     .box .inputBox input {
       width: 100%;
-      padding: 10px 0;
+      padding: 10px 10px;
       font-size: 16px;
       color: #fff;
       letter-spacing: 1px;
@@ -106,7 +104,7 @@ if (isset($_SESSION["id"])) {
 
 <body>
   <div class="box">
-    <h2>Login</h2>
+    <img class="img-fluid" src="user.png" width="150" alt="avtar">
     <form action="" method="post" class="needs-validation" novalidate>
 
       <div class="inputBox">

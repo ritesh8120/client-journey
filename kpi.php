@@ -413,9 +413,9 @@ $row = mysqli_fetch_assoc($querys);
       if (isNaN(goal)) {
         alert(goal + " is not a number");
       } else {
-        var three = goal * 0.133;
+        var three = goal * 0.098;
         var seven = goal * 0.075;
-        var five = goal * 0.05;
+        var five = goal * 0.055;
         $('.three').text(three.toFixed(2));
         $('.seven').text(seven.toFixed(2));
         $('.five').text(five.toFixed(2));

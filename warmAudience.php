@@ -57,14 +57,152 @@ if (isset($_REQUEST["delid"])) {
 	<link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=latin-ext" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+
+		body {
+			font-family: 'Roboto', sans-serif !important;
+			font-size: 13px !important;
+			font-weight: 500 !important;
+		}
+
+		select.form-control.input-sm {
+			/*background: #00a1ff !important;*/
+			border: 0px !important;
+			border-radius: 0px !important;
+			/*color: #FFF  !important;*/
+			font-weight: 500 !important;
+			font-size: 13px !important;
+			font-family: 'Roboto', sans-serif;
+			-webkit-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.18);
+			-moz-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.18);
+			box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.18);
+		}
+
+		.pagination>li>a,
+		.pagination>li>span {
+			/*background: #00a1ff !important;*/
+			border: 0px !important;
+			border-radius: 0px !important;
+			color: #000 !important;
+			font-weight: 500 !important;
+			font-size: 13px !important;
+			font-family: 'Roboto', sans-serif;
+			-webkit-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.18);
+			-moz-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.18);
+			box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.18);
+		}
+
+		.pagination>.active>a {
+			background-color: #000 !important;
+			color: #fff !important;
+		}
+
+		.pagination>.active>a:hover {
+			background-color: #bfbfbf !important;
+			color: #fff !important;
+		}
+
+		.table-striped>tbody>tr:nth-of-type(odd) {
+			/*background-color: #00a1ff!important;*/
+			/*color: #FFF!important;*/
+			font-size: 13px !important;
+			font-family: 'Roboto', sans-serif;
+			font-weight: 500 !important;
+		}
+
+		tr.even {
+			/*   background: #bfbfbf!important;
+    color: #000!important;*/
+			font-size: 13px !important;
+			font-weight: 500 !important;
+			font-family: 'Roboto', sans-serif;
+		}
+
+		th.sorting,
+		.sorting_asc {
+			font-family: 'Roboto', sans-serif;
+			font-weight: 500 !important;
+			border: 1px solid #FFF !important;
+			color: #FFF;
+			border: 1px solid #93CE37;
+			border-bottom: 3px solid #9ED929;
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#30b3ff+0,00a1ff+100 */
+			background: rgb(0, 0, 0);
+			/* Old browsers */
+			background: -moz-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
+			/* FF3.6-15 */
+			background: -webkit-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
+			/* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
+			/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#30b3ff', endColorstr='#00a1ff', GradientType=0);
+			/* IE6-9 */
+
+			-webkit-border-top-left-radius: 5px;
+			-webkit-border-top-right-radius: 5px;
+			-moz-border-radius: 5px 5px 0px 0px;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+		}
+
+		th.sorting,
+		.sorting_desc {
+			font-family: 'Roboto', sans-serif;
+			font-weight: 500 !important;
+			border: 1px solid #FFF !important;
+			color: #FFF;
+			border: 1px solid #93CE37;
+			border-bottom: 3px solid #9ED929;
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#30b3ff+0,00a1ff+100 */
+			background: rgb(0, 0, 0);
+			/* Old browsers */
+			background: -moz-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
+			/* FF3.6-15 */
+			background: -webkit-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
+			/* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
+			/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#30b3ff', endColorstr='#00a1ff', GradientType=0);
+			/* IE6-9 */
+
+			-webkit-border-top-left-radius: 5px;
+			-webkit-border-top-right-radius: 5px;
+			-moz-border-radius: 5px 5px 0px 0px;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+		}
+
+		input.form-control.input-sm {
+			/*background: #00a1ff !important;*/
+			border: 0px !important;
+			border-radius: 0px !important;
+			/*color: #FFF  !important;*/
+			font-weight: 500 !important;
+			font-size: 13px !important;
+			font-family: 'Roboto', sans-serif;
+			-webkit-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.18);
+			-moz-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.18);
+			box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.18);
+		}
+
+		.btns {
+			border: 2px solid #000;
+			color: #000;
+			font-size: 20px;
+			font-weight: 600;
+			padding: 5px 10px;
+			width: 120px !important;
+		}
+	</style>
 </head>
 
 <body>
 	<div style="margin: 0 10%">
-		<div style="margin: 20px 0;float: right;"><a id="log" href="logout"><i class="fas fa-sign-out-alt"></i> Logout </a></div>
+		<div style="margin: 20px 0;float: right;"><a class="btn btns" href="logout"><i class="fas fa-sign-out-alt"></i> Logout </a></div>
 		<center><img src="manas.png" class="img-fluid" width="800"></center>
-		<a class="btn btn-info" style="width:150px;margin:5px" href="home">Home</a>
-		<a class="btn btn-info" style="width:150px;margin:5px" href="login">Add New</a>
+		<a class="btn btns" style="width:150px;margin:5px" href="home">Home</a>
+		<a class="btn btns" style="width:150px;margin:5px" href="login">Add New</a>
 		<h1 style="text-align:center;">Warm Audience / Had Interaction/Ready For Call</h3>
 			<table id="example" class="table table-striped table-bordered" style="width:100%">
 				<thead>
@@ -101,18 +239,18 @@ if (isset($_REQUEST["delid"])) {
 							$row1 = mysqli_fetch_array($query1);
 							$row2 = mysqli_fetch_array($query2);
 					?>
-							<tr>
+							<tr class="<?= $checked ?><?= $style ?>">
 								<td class="text-center"><?php echo $i; ?></td>
-								<td class="text-center"><?= date('m/d/y', strtotime($row['date'])); ?></td>
+								<td class="text-center"><?= date('m/d/Y', strtotime($row['date'])); ?></td>
 								<td class="text-center"><?php echo $row['firstname'] ?><?php echo " " . $row['lastname']; ?></td>
 								<td><?php echo $row['email'] ?></td>
 								<td class="text-center"><?php echo $row['address'] ?></td>
 								<td class="text-center"><?php echo $row['lead'] ?></td>
 								<td class="text-center"><?php echo $row['phone'] ?></td>
-								<!-- <td class="text-center"><a href="Detail?upid=<?php echo $row['cid'] ?>"><img src="unnamed.png" height="40"></a></td> -->
-								<td class="text-center"><a href="research?id=<?php echo $row['cid'] ?>"><i class="fab fa-searchengin" style="font-size: 30px;"></i></a></td>
-								<td class="text-center"><a href="notes?id=<?php echo $row['cid'] ?>"><i class="fa fa-history" aria-hidden="true" style="font-size: 20px;"></i></a></td>
-								<td class="text-center"><a href="adit?eid=<?php echo $row['cid'] ?>"><i class="fas fa-pen-square" style="font-size: 25px;"></i></a></td>
+								<!--<td class="text-center"><a href="Detail?upid=<?php echo $row['cid'] ?>"><img src="unnamed.png" height="40"></a></td>-->
+								<td class="text-center"><a href="research?id=<?php echo $row['cid'] ?>"><i class="fab fa-searchengin" style="font-size: 30px;color:#000"></i></a></td>
+								<td class="text-center"><a href="notes?id=<?php echo $row['cid'] ?>"><i class="fa fa-history" aria-hidden="true" style="font-size: 20px;color:#000"></i></a></td>
+								<td class="text-center"><a href="adit?eid=<?php echo $row['cid'] ?>"><i class="fas fa-pen-square" style="font-size: 25px;color:#000"></i></a></td>
 								<td class="text-center"><select class="levels" data-id="<?php echo $row['cid'] ?>">
 										<option disabled>--Select Level--</option>
 										<option <?= ($row['Audience'] == '0') ? "selected='selected'" : ""; ?> value="0">Level 0</option>
@@ -124,8 +262,8 @@ if (isset($_REQUEST["delid"])) {
 									</select></td>
 								<td class="text-center"><?php echo $row2['title']; ?></td>
 								<td class="text-center"><?php echo $row1['title']; ?></td>
-								<td class="text-center"><?php echo date('m/d/y', strtotime($row1['date'])); ?></td>
-								<td class="text-center"><a href="warmAudience?delid=<?php echo $row['cid'] ?>" onclick="return confirm('<?php echo $row['firstname']; ?>\n Are you sure you want to delete?')"><img src="garbage.png" height="30px"></a></td>
+								<td class="text-center"><?php echo ($row1['date'] == "") ? " " : date('m/d/y', strtotime($row1['date'])); ?></td>
+								<td class="text-center"><a href="allAudience?delid=<?php echo $row['cid'] ?>" onclick="return confirm('<?php echo $row['firstname']; ?>\n Are you sure you want to delete?')"><i class="fas fa-trash" style="font-size: 25px;color:#000"></i></a></td>
 							</tr>
 					<?php $i++;
 						}

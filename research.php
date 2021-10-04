@@ -99,6 +99,25 @@ if ($result->num_rows > 0) {
 			border-radius: .25rem;
 			transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 		}
+
+		.btns {
+			border: 2px solid #000;
+			color: #000;
+			font-size: 20px;
+			font-weight: 600;
+			padding: 5px 10px;
+			/* width: 120px !important; */
+			text-decoration: none;
+		}
+
+		.btns:hover {
+			text-decoration: none;
+			color: #000;
+		}
+
+		.form-control{
+			border: 2px solid #000;
+		}
 	</style>
 
 </head>
@@ -109,12 +128,12 @@ if ($result->num_rows > 0) {
 
 		<br>
 
-		<a class="btn btn-primary" href="home">Home</a>
+		<a class="btns btn" href="home">Home</a>
 
-		<!-- <a href="Detail?upid=<?= $id ?>" class='btn btn-primary'>Show Map</a> -->
+		<!-- <a href="Detail?upid=<?= $id ?>" class='btns btn'>Show Map</a> -->
 
-		<a href="notes?id=<?= $id ?>" class='btn btn-primary'>Show History</a>
-		<a id="log" class="float-right" href="logout"><i class="fas fa-sign-out-alt"></i> Logout </a>
+		<a href="notes?id=<?= $id ?>" class='btns btn'>Show History</a>
+		<a class="float-right btns btn" href="logout"><i class="fas fa-sign-out-alt"></i> Logout </a>
 
 		<div class="row">
 			<div class="col-md-6">
@@ -433,7 +452,7 @@ if ($result->num_rows > 0) {
 
 								</div>
 							<?php } ?>
-							<button id="save" type="button" style="width:200px;font-size:20px;font-weight:600;" class="float-right btn btn-warning" data-id="<?php echo $id; ?>">save</button>
+							<button id="save" type="button" style="width:200px;font-size:20px;font-weight:600;" class="float-right btn btns" data-id="<?php echo $id; ?>">save</button>
 
 
 						</div>
@@ -453,7 +472,7 @@ if ($result->num_rows > 0) {
 			.create(document.querySelector('#historyNotes'))
 			.then(newEditor => {
 				editor = newEditor;
-				newEditor.ui.view.editable.element.style.height = '900px';
+				newEditor.ui.view.editable.element.style.height = '950px';
 			})
 			.catch(error => {
 				console.error(error);

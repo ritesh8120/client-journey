@@ -40,6 +40,8 @@ if (isset($_REQUEST["delid"])) {
                 <th class="text-center">Admin Name</th>
                 <th class="text-center">Admin Profile Link</th>
                 <th class="text-center">Current Members</th>
+                <th class="text-center">History Notes</th>
+                <th class="text-center">Next Action Notes</th>
                 <th class="text-center">Post History</th>
                 <th class="text-center">Edit</th>
                 <th class="text-center">Delete</th>
@@ -51,6 +53,22 @@ if (isset($_REQUEST["delid"])) {
             if (mysqli_num_rows($querys) > 0) {
                 $i = 1;
                 while ($row = mysqli_fetch_array($querys)) {
+                    $row_id = $row["fld_id"];
+                    $historyMember = $conn->query("SELECT * FROM `post_history` WHERE `user_id`='$row_id'");
+
+                    if ($historyMember->num_rows > 0) {
+                        $history = $historyMember->fetch_assoc();
+                        $abouttitle = $history['abouttitle'];
+                    } else {
+                        $abouttitle = "";
+                    }
+                    $result = $conn->query("SELECT * FROM `post_next_action` WHERE `user_id`='$row_id'");
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        $abouttitlenext = $row['abouttitle'];
+                    } else {
+                        $abouttitlenext = "";
+                    }
             ?>
                     <tr>
                         <td class="text-center"><?php echo $i; ?></td>
@@ -60,6 +78,8 @@ if (isset($_REQUEST["delid"])) {
                         <td class="text-center"><?php echo $row['adminname'] ?></td>
                         <td class="text-center"><a href="<?php echo $row['adminplink'] ?>" target="_blank"><?php echo $row['adminplink'] ?></a></td>
                         <td class="text-center"><?php echo $row['currentm'] ?></td>
+                        <td class="text-center"><?php echo $abouttitle; ?></td>
+                        <td class="text-center"><?php echo $abouttitlenext; ?></td>
                         <td class="text-center"><a href="posthistory?id=<?php echo $row['fld_id'] ?>"><i class="fab fa-searchengin" style="font-size: 30px;"></i></a></td>
                         <td class="text-center"><a href="editfb?id=<?php echo $row['fld_id'] ?>"><i class="fas fa-pen-square" style="font-size: 25px;"></i></a></td>
                         <td class="text-center"><a href="facebook_group?delid=<?php echo $row['fld_id'] ?>" onclick="return confirm('<?php echo $row['addnew']; ?>\n Are you sure you want to delete?')"><img src="garbage.png" height="30px"></a></td>

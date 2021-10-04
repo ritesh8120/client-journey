@@ -68,6 +68,10 @@ if (isset($_POST['submit'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="image.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<style>
 		input[type="text"],
 		input[type="email"],
@@ -97,45 +101,48 @@ if (isset($_POST['submit'])) {
 			width: 100%;
 			overflow-y: scroll
 		}
+
+		.btns {
+			border: 2px solid #000;
+			color: #000;
+			font-size: 20px;
+			font-weight: 600;
+			padding: 5px 10px;
+			width: 120px !important;
+			text-decoration: none;
+		}
+
+		.btns:hover {
+			text-decoration: none;
+			color: #000;
+		}
+
+		.form-control {
+			width: 200px;
+		}
 	</style>
 </head>
 
 <body>
-	<div style="margin: 20px;float:right">
-		<a id="log" href="logout"><i class="fas fa-sign-out-alt"></i> Logout </a>
-	</div>
+
 	<div class="container">
 		<img src="manas.png" class="img-fluid"><br><br><br>
-		<a href="home" style="background: #2d388a; color: #fff; padding: 10px 15px; margin: 5px; border-radius: 5px; text-decoration: none;">Home</a>
-		<a href="allAudience" style="background: #2d388a; color: #fff; padding: 10px 15px; margin: 5px;border-radius: 5px; text-decoration: none;">Show All</a><br><br>
+		<div style="float:right">
+			<a class="btn btns" href="logout"><i class="fas fa-sign-out-alt"></i> Logout </a>
+		</div>
+		<a href="home" class="btn btns">Home</a>
+		<a href="allAudience" class="btn btns">Show All</a><br><br>
 		<h1>New Client Add</h1>
 		<form action="" method="post" style="background-color: #d9d9d9; padding: 25px;">
 			<?php echo $sucees ?>
 			<table>
 				<tr>
 					<td>
-						<table class="form-inline">
-							<tr>
-								<th><label>First Name: </label></th>
-								<td class="form-group"><input type="text" name="fname" autocomplete="autocomplete" class="form-control"></td>
-							</tr>
-							<tr>
-								<th><label>Last Name: </label></th>
-								<td class="form-group"><input type="text" name="lname" class="form-control" autocomplete="autocomplete"></td>
-							</tr>
-							<tr>
-								<th><label>Email: </label></th>
-								<td class="form-group"><input type="email" name="email" class="form-control" autocomplete="autocomplete"></td>
-							</tr>
-							<tr>
-								<th><label>Phone No: </label></th>
-								<td class="form-group"><input type="number" class="form-control" name="pno"></td>
-							</tr>
-							<tr>
-								<th><label>Location: </label></th>
-								<td class="form-group"><input type="text" name="address" class="form-control" autocomplete="autocomplete"></td>
-							</tr>
-						</table>
+						<div class="form-group"><label>First Name: </label><input type="text" name="fname" autocomplete="autocomplete" class="form-control"></div>
+						<div class="form-group"><label>Last Name: </label><input type="text" name="lname" class="form-control" autocomplete="autocomplete"></div>
+						<div class="form-group"><label>Email: </label><input type="email" name="email" class="form-control" autocomplete="autocomplete"></div>
+						<div class="form-group"><label>Phone No: </label><input type="number" class="form-control" name="pno"></div>
+						<div class="form-group"><label>Location: </label><input type="text" name="address" class="form-control" autocomplete="autocomplete"></div>
 					</td>
 					<td>
 						<b>Lead Owner :-</b>
@@ -195,41 +202,41 @@ if (isset($_POST['submit'])) {
 						</div>
 					</td>
 					<td>
-						<b>Level</b>
+						<b>Levels</b>
 						<div class="form-group">
 							<input type="radio" class="mx-2" name="level" value="0" id="radio1" checked>
-							<label for="radio1"> Level 0 - Sent Friend Request/ Connection Request/ Welcome Message</label>
+							Level 0 - Sent Friend Request/ Connection Request/ Welcome Message
 						</div>
 						<div class="form-group">
 							<input type="radio" class="mx-2" name="level" value="1" id="radio1">
-							<label for="radio1"> Level 1 - Cold Audience/ Want Info/ Educate</label>
+							Level 1 - Cold Audience/ Want Info/ Educate
 						</div>
 						<div class="form-group">
 							<input type="radio" class="mx-2" name="level" value="2" id="radio2">
-							<label for="radio2"> Level 2 - Interested Audience</label>
+							Level 2 - Interested Audience
 						</div>
 						<div class="form-group">
 							<input type="radio" class="mx-2" name="level" value="3" id="radio3">
-							<label for="radio3"> Level 3 - Warm Audience / Had Interaction/Ready For Call </label>
+							Level 3 - Warm Audience / Had Interaction/Ready For Call
 						</div>
 						<div class="form-group">
 							<input type="radio" class="mx-2" name="level" value="4" id="radio4">
-							<label for="radio4"> Level 4 - Hot Audience /Ready For Offer</label>
+							Level 4 - Hot Audience /Ready For Offer
 						</div>
 						<div class="form-group">
 							<input type="radio" class="mx-2" name="level" value="5" id="radio5">
-							<label for="radio5"> Level 5 - No Match</label>
+							Level 5 - No Match
 						</div>
 					</td>
 				</tr>
 			</table>
 			<div class="row">
 				<div class="col-12">
-					<input style="margin-bottom:10px" type="submit" name="submit" value="Submit">
+					<input style="margin-bottom:10px;border-radius: 5px;border: 2px solid #000;font-size: 20px;font-weight: 600;" type="submit" name="submit" value="Submit">
 				</div>
 				<div class="col-12">
-					<button style="margin-bottom:10px;box-sizing: border-box;background:transparent;padding:3px 10px;width: 150px;border: #000 2px solid;">
-						<a href="coachnotes" style="text-decoration: none;color: #000;font-size:20px;">Coach Notes</a>
+					<button style="border-radius: 5px;margin-bottom:10px;box-sizing: border-box;background:transparent;padding:3px 10px;width: 150px;border: #000 2px solid;">
+						<a href="coachnotes" style="text-decoration: none;color: #000;font-size:20px;font-weight: 600;">Coach Notes</a>
 					</button>
 				</div>
 			</div>

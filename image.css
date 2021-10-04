@@ -1,59 +1,61 @@
-.image{
-	background: url("manas.png");
-	background-repeat: no-repeat;
-	width: 1024px;
-	height:768px;
-
-	}
-  #log{
-	position: relative;
-	padding: 3px 10px;
-	color: #000;
-		
-	text-decoration: none;
-	font-size: 20px;
-	border:2px solid #000;
-	box-sizing: border-box;
-	transition: 0.5s;
-}
-#log:hover{
-	color: #fff;
-}
-#log:before{
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 50%;
-	height: 100%;
-	background: #000;
-	z-index: -1;
-	transform: scaleX(0);
-	transition: transform 0.5s;
-	transform-origin: left;
-}
-#log:hover:before{
-transform: scaleX(1);
-transition: transform 0.5s;
-transform-origin: right;
-}
-#log:after{
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 50%;
-	height: 100%;
-	background: #000;
-	z-index: -1;
-	transform: scaleX(0);
-	transition: transform 0.5s;
-	transform-origin: right;
-}
-#log:hover:after{
-transform: scaleX(1);
-transition: transform 0.5s;
-transform-origin: left;
+.image {
+    background: url("manas.png");
+    background-repeat: no-repeat;
+    width: 1024px;
+    height: 768px;
 }
 
+#log {
+    position: relative;
+    padding: 3px 10px;
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    border: 2px solid #000;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+#log:hover {
+    color: #fff;
+}
+
+#log:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: #000;
+    z-index: -1;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+    transform-origin: left;
+}
+
+#log:hover:before {
+    transform: scaleX(1);
+    transition: transform 0.5s;
+    transform-origin: right;
+}
+
+#log:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: #000;
+    z-index: -1;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+    transform-origin: right;
+}
+
+#log:hover:after {
+    transform: scaleX(1);
+    transition: transform 0.5s;
+    transform-origin: left;
 }

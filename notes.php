@@ -14,6 +14,7 @@ if ($result->num_rows > 0) {
 	while ($row = $result->fetch_assoc()) {
 
 		$name = $row['firstname'] . "" . $row['lastname'];
+		$cid = $row['cid'];
 	}
 }
 
@@ -237,7 +238,7 @@ if ($historyMember->num_rows > 0) {
 
 						<div class="panel-heading">
 
-							<h3 class="panel-title">Name:- <?= $name ?></h3>
+							<h3 class="panel-title">Name:- <?= $name." (". $cid.")"; ?></h3>
 
 						</div><br>
 

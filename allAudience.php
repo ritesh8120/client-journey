@@ -387,7 +387,7 @@ if (isset($_REQUEST["delid"])) {
                                         <td class="text-center"><?php echo $i; ?></td>
                                         <td class="text-center"><?php echo $row['cid']; ?></td>
                                         <td class="text-center"><?= date('m/d/Y', strtotime($row['date'])); ?></td>
-                                        <td class="text-center"><?php echo $row['firstname'] ?><?php echo " " . $row['lastname']; ?></td>
+                                        <td class="text-center"><a href="research?id=<?php echo $row['cid'] ?>"><?php echo $row['firstname'] ?><?php echo " " . $row['lastname']; ?></a></td>
                                         <td><?php echo $row['email'] ?></td>
                                         <td class="text-center"><?php echo $row['address'] ?></td>
                                         <td class="text-center"><?php echo $row['lead'] ?></td>

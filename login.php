@@ -153,10 +153,10 @@ if (isset($_POST['submit'])) {
 							<input type="radio" class="mx-2" name="leadowener" value="Anmol Nagpal" checked> Anmol Nagpal
 						</div>
 						<div class="form-group">
-							<input type="radio" class="mx-2" name="leadowener" value="Courtney Way"> Courtney Way
+							<input type="radio" class="mx-2" name="leadowener" value="SP1"> SP1
 						</div>
 						<div class="form-group">
-							<input type="radio" class="mx-2" name="leadowener" value="Sydney Hungeford"> Sydney Hungeford
+							<input type="radio" class="mx-2" name="leadowener" value="SP2"> SP2
 						</div><br>
 						<!-- type -->
 						<b>Type :-</b>
@@ -204,28 +204,32 @@ if (isset($_POST['submit'])) {
 					<td>
 						<b>Levels</b>
 						<div class="form-group">
-							<input type="radio" class="mx-2" name="level" value="0" id="radio1" checked>
-							Level 0 - Sent Friend Request/ Connection Request/ Welcome Message
+							<input type="radio" class="mx-2" name="level" value="1" id="radio1" checked>
+							Level 1 - Sent Friend Request/ Connection Request/ Welcome Message
 						</div>
 						<div class="form-group">
-							<input type="radio" class="mx-2" name="level" value="1" id="radio1">
-							Level 1 - Cold Audience/ Want Info/ Educate
+							<input type="radio" class="mx-2" name="level" value="2" id="radio1">
+							Level 2 - Cold Audience/ Want Info/ Educate
 						</div>
 						<div class="form-group">
-							<input type="radio" class="mx-2" name="level" value="2" id="radio2">
-							Level 2 - Interested Audience
+							<input type="radio" class="mx-2" name="level" value="3" id="radio2">
+							Level 3 - Interested Audience
 						</div>
 						<div class="form-group">
-							<input type="radio" class="mx-2" name="level" value="3" id="radio3">
-							Level 3 - Warm Audience / Had Interaction/Ready For Call
+							<input type="radio" class="mx-2" name="level" value="4" id="radio3">
+							Level 4 - Warm Audience / Had Interaction/Ready For Call
 						</div>
 						<div class="form-group">
-							<input type="radio" class="mx-2" name="level" value="4" id="radio4">
-							Level 4 - Hot Audience /Ready For Offer
+							<input type="radio" class="mx-2" name="level" value="5" id="radio4">
+							Level 5 - Hot Audience /Ready For Offer
 						</div>
 						<div class="form-group">
-							<input type="radio" class="mx-2" name="level" value="5" id="radio5">
-							Level 5 - No Match
+							<input type="radio" class="mx-2" name="level" value="6" id="radio5">
+							Level 6 - No Match
+						</div>
+						<div class="form-group">
+							<input type="radio" class="mx-2" name="level" value="7" id="radio6">
+							Level 7 - Converted
 						</div>
 					</td>
 				</tr>

@@ -25,7 +25,7 @@ include('config.php');
 		}
 
 		.btn {
-			width: 300px;
+			width: 200px;
 		}
 	</style>
 </head>
@@ -37,7 +37,8 @@ include('config.php');
 		<center><img src="manas.png" class="img-fluid" width="800"><br><br>
 			<h1 style="color:green;font-weight: 900;font-size: 5rem;">The Green Machine</h1><br><a href="level" class="btn btn-info">Client Journey</a>
 			<a href="dashboard" class="btn btn-info">KPI's</a>
-			<a href="facebook_group" class="btn btn-info">Facebook Group Marketing/Activity</a>
+			<a href="facebook_group" class="btn btn-info" style="width: 300px;">Facebook Group Marketing/Activity</a>
+			<a class="btn btn-info" href="coachnotes">Coach Notes</a>
 		</center>
 	</div>
 	</div>

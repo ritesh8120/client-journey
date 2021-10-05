@@ -203,6 +203,15 @@ if ($historyMember->num_rows > 0) {
 			top: 5px;
 
 		}
+
+		.btns {
+			border: 2px solid #000;
+			color: #000;
+			font-size: 20px;
+			font-weight: 600;
+			padding: 5px 10px;
+			/* width: 120px !important; */
+		}
 	</style>
 
 </head>
@@ -210,15 +219,14 @@ if ($historyMember->num_rows > 0) {
 <body>
 
 	<div class="container">
-
 		<br>
-
-		<a class="btn btn-primary" href="home">Home</a>
-
-		<!-- <a href="Detail?upid=<?= $id ?>" class='btn btn-primary'>Show Map</a> -->
-
-		<a class="btn btn-primary" href="research?id=<?= $id ?>">Show Research</a>
+		<a class="btn btns" href="home">Home</a>
+		<a class="btn btns" href="research?id=<?= $id ?>">Show Research</a>
+		<a class="btn btns" href="allAudience">Show All</a>
+		<a class="btn btns" href="login">Add New</a>
+		<a class="btn btns" href="level">Levels List</a>
 		<a id="log" class="float-right" href="logout"><i class="fas fa-sign-out-alt"></i> Logout </a>
+		<a class='btns btn' href="javascript:history.back()">Back</a>
 		<div class="row">
 
 			<div class="col-md-6">
@@ -421,13 +429,7 @@ if ($historyMember->num_rows > 0) {
 					<th width="100">Delete</th>
 
 				</tr>
-
-			</table>
-
-			<table class="table table-striped table-bordered" style="padding:0" id="tbHistoryNotes">
-
 				<?php echo $listView; ?>
-
 			</table>
 
 		</div>
@@ -465,7 +467,7 @@ if ($historyMember->num_rows > 0) {
 						<input type="hidden" name="" id="notes_id">
 						<div class="form-group"><input type="text" id="title3" class="form-control"></div>
 						<div class="form-group">
-						<textarea style="width: 100%" id="notes"></textarea>
+							<textarea style="width: 100%" id="notes"></textarea>
 						</div>
 
 					</div>
@@ -604,7 +606,7 @@ if ($historyMember->num_rows > 0) {
 						data: {
 							"cid": cid,
 							"notes": html,
-							"title2":title2
+							"title2": title2
 						},
 
 						type: "POST",
@@ -695,7 +697,7 @@ if ($historyMember->num_rows > 0) {
 
 			$.post("history_notes", {
 					notes: notes,
-					title3:title3,
+					title3: title3,
 					id: id
 
 				},

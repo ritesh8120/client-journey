@@ -5,10 +5,10 @@ if (!isset($_SESSION["id"])) {
 }
 date_default_timezone_set('America/Los_Angeles');
 include('config.php');
-function getnumofrow($Audience, $type)
+function getnumofrow($Audience)
 {
 	include('config.php');
-	$sql = "SELECT * FROM client_info WHERE `Audience`='$Audience' and `type`='$type'";
+	$sql = "SELECT * FROM client_info WHERE `Audience`='$Audience' ";
 	$query = mysqli_query($conn, $sql);
 	$row = mysqli_num_rows($query);
 	return $row;
@@ -39,7 +39,7 @@ function getnumofrow($Audience, $type)
 
 	.container {
 		width: 90%;
-		margin: 100px auto
+		/* margin: 100px auto */
 	}
 
 	h1 {
@@ -224,83 +224,104 @@ function getnumofrow($Audience, $type)
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <section class="container">
+
+	<center><img src="manas.png" class="img-fluid" width="800"></center>
+	<br><br>
 	<div style="float:right;margin:20px;"><a id="log" class="btns" href="logout"><i class="fas fa-sign-out-alt"></i> Logout </a></div>
-	<center><img src="manas.png" class="img-fluid" width="800"></center><br>
 	<a class="btns" href="home">Home</a>
 	<a class="btns" href="allAudience">Show All</a>
 	<a class="btns" href="login">Add New</a>
-	<a class="btns" href="coachnotes">Admin Notes</a>
 	<h1>Levels </h1>
 	<div class="row">
-		<article class="card fl-left" style="background-color:#ccc;">
-			<section class="date">
-				<time datetime="23th feb">
-					<span>0</span><span>Level</span>
-				</time>
-			</section>
-			<section class="card-cont">
-				<h3>Sent Friend Request/ Connection Request/ Welcome Message</h3>
-				<a href="connectionAudience"><?= getnumofrow('0', ''); ?></a>
-			</section>
-		</article>
-		<article class="card fl-left" style="background-color:#b8daff;">
+		<article class="card fl-left" style="background-color:#ccc;" data-href="connectionAudience">
 			<section class="date">
 				<time datetime="23th feb">
 					<span>1</span><span>Level</span>
 				</time>
 			</section>
 			<section class="card-cont">
-				<h3 style="padding:0 15px 20px 0;">Cold Audience/ Want Info/ Educate</h3>
-				<a href="coldAudience"><?= getnumofrow('1', 'yoga'); ?></a>
+				<h3>Sent Friend Request/ Connection Request/ Welcome Message</h3>
+				<a href="connectionAudience"><?= getnumofrow('1'); ?></a>
 			</section>
 		</article>
-	</div>
-	<div class="row">
-		<article class="card fl-left" style="background-color:#ff9900;">
+		<article data-href="coldAudience" class="card fl-left" style="background-color:#b8daff;">
 			<section class="date">
 				<time datetime="23th feb">
 					<span>2</span><span>Level</span>
 				</time>
 			</section>
 			<section class="card-cont">
-				<h3 style="padding:0 155px 20px 0 ;">Interested Audience</h3>
-				<a href="interestedAudience"><?= getnumofrow('2', 'yoga'); ?></a>
+				<h3 style="padding:0 15px 20px 0;">Cold Audience/ Want Info/ Educate</h3>
+				<a href="coldAudience"><?= getnumofrow('2'); ?></a>
 			</section>
 		</article>
-		<article class="card fl-left" style="background-color:#ffeeba;">
+	</div>
+	<div class="row">
+		<article data-href="interestedAudience" class="card fl-left" style="background-color:#ff9900;">
 			<section class="date">
 				<time datetime="23th feb">
 					<span>3</span><span>Level</span>
 				</time>
 			</section>
 			<section class="card-cont">
-				<h3>Warm Audience / Had Interaction/Ready For Call</h3>
-				<a href="warmAudience"><?= getnumofrow('3', 'yoga'); ?></a>
+				<h3 style="padding:0 155px 20px 0 ;">Interested Audience</h3>
+				<a href="interestedAudience"><?= getnumofrow('3'); ?></a>
 			</section>
 		</article>
-	</div>
-	<div class="row">
-		<article class="card fl-left" style="background-color:#c3e6cb;">
+		<article data-href="warmAudience" class="card fl-left" style="background-color:#ffeeba;">
 			<section class="date">
 				<time datetime="23th feb">
 					<span>4</span><span>Level</span>
 				</time>
 			</section>
 			<section class="card-cont">
-				<h3 style="padding:0 40px 20px 0 ;">Hot Audience /Ready For Offer</h3>
-				<a href="hotAudience"><?= getnumofrow('4', 'yoga'); ?></a>
+				<h3>Warm Audience / Had Interaction/Ready For Call</h3>
+				<a href="warmAudience"><?= getnumofrow('4'); ?></a>
 			</section>
 		</article>
-		<article class="card fl-left" style="background-color:#f5c6cb;">
+	</div>
+	<div class="row">
+		<article data-href="hotAudience" class="card fl-left" style="background-color:#c3e6cb;">
 			<section class="date">
 				<time datetime="23th feb">
 					<span>5</span><span>Level</span>
 				</time>
 			</section>
 			<section class="card-cont">
+				<h3 style="padding:0 40px 20px 0 ;">Hot Audience /Ready For Offer</h3>
+				<a href="hotAudience"><?= getnumofrow('5'); ?></a>
+			</section>
+		</article>
+		<article data-href="matchAudience" class="card fl-left" style="background-color:#f5c6cb;">
+			<section class="date">
+				<time datetime="23th feb">
+					<span>6</span><span>Level</span>
+				</time>
+			</section>
+			<section class="card-cont">
 				<h3 style="padding:0 270px 20px 0 ;">No Match<br></h3>
-				<a href="matchAudience"><?= getnumofrow('5', 'yoga'); ?></a>
+				<a href="matchAudience"><?= getnumofrow('6'); ?></a>
+			</section>
+		</article>
+	</div>
+	<div class="row">
+		<article data-href="converted" class="card fl-left" style="background-color:#B23CFD;margin-left:25%">
+			<section class="date">
+				<time datetime="23th feb">
+					<span>7</span><span>Level</span>
+				</time>
+			</section>
+			<section class="card-cont">
+				<h3 style="padding:0 270px 20px 0 ;">Converted<br></h3>
+				<a href="converted"><?= getnumofrow('7'); ?></a>
 			</section>
 		</article>
 	</div>
 	</div>
+	<script>
+		$(document).ready(function() {
+			$('article').click(function() {
+				window.location.href = $(this).data('href');
+			});
+		});
+	</script>

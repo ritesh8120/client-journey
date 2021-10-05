@@ -17,8 +17,10 @@ if ($result->num_rows > 0) {
 	}
 }
 
-
-
+$delid = $_REQUEST["id"];
+$sql = "SELECT * FROM `client_info` WHERE cid='$delid'";
+$res = mysqli_query($conn, $sql);
+$arow = mysqli_fetch_array($res);
 ?>
 
 <!DOCTYPE html>
@@ -115,7 +117,7 @@ if ($result->num_rows > 0) {
 			color: #000;
 		}
 
-		.form-control{
+		.form-control {
 			border: 2px solid #000;
 		}
 	</style>
@@ -127,94 +129,96 @@ if ($result->num_rows > 0) {
 	<div class="container">
 
 		<br>
-
 		<a class="btns btn" href="home">Home</a>
-
-		<!-- <a href="Detail?upid=<?= $id ?>" class='btns btn'>Show Map</a> -->
-
 		<a href="notes?id=<?= $id ?>" class='btns btn'>Show History</a>
+		<a class="btn btns" href="allAudience">Show All</a>
+		<a class="btn btns" href="login">Add New</a>
+		<a class="btn btns" href="level">Levels List</a>
 		<a class="float-right btns btn" href="logout"><i class="fas fa-sign-out-alt"></i> Logout </a>
-
-		<div class="row">
+		<a class='btns btn' href="javascript:history.back()">Back</a>
+		<div class="row" style="margin-top: 25px;">
 			<div class="col-md-6">
 				<table>
-					<?php
-					$delid = $_REQUEST["id"];
-					if (isset($_REQUEST["id"])) {
 
-						/********** 'localhost:3306','myporta7_ritesh','riteshjourny','myporta7_client' ********************/
-						// $dbconn = mysqli_connect("localhost","root","","client");
-						$sql = "SELECT * FROM `client_info` WHERE cid='$delid'";
-						$res = mysqli_query($conn, $sql);
-						if (mysqli_num_rows($res) > 0) {
-							while ($row = mysqli_fetch_array($res)) {
-					?>
-								<tr>
-									<th>Name - </th>
-									<td><?php echo $row['firstname'] ?><?php echo " " . $row['lastname']; ?></td>
-								</tr>
-								<tr>
-									<th>Email - </th>
-									<td><?php echo $row['email']; ?></td>
-								</tr>
-								<tr>
-									<th>Phone - </th>
-									<td><?php echo $row['phone']; ?></td>
-								</tr>
-								<tr>
-									<th>Address - </th>
-									<td><?php echo $row['address']; ?></td>
-								</tr>
-								<tr>
-									<th>Source - </th>
-									<td><?php echo $row['source'];  ?></td>
-								</tr>
-								<tr>
-									<th>Leadowner - </th>
-									<td><?php echo $row['lead']; ?></td>
-								</tr>
+					<tr>
+						<th>Name - </th>
+						<td><?php echo $arow['firstname'] ?><?php echo " " . $arow['lastname']; ?></td>
+					</tr>
+					<tr>
+						<th>Email - </th>
+						<td><?php echo $arow['email']; ?></td>
+					</tr>
+					<tr>
+						<th>Phone - </th>
+						<td><?php echo $arow['phone']; ?></td>
+					</tr>
+					<tr>
+						<th>Address - </th>
+						<td><?php echo $arow['address']; ?></td>
+					</tr>
+					<tr>
+						<th>Source - </th>
+						<td><?php echo $arow['source'];  ?></td>
+					</tr>
+					<tr>
+						<th>Leadowner - </th>
+						<td><?php echo $arow['lead']; ?></td>
+					</tr>
 				</table>
-	<?php }
-						}
-					} ?>
+
 			</div>
 			<div class="col-md-6">
-				<?php
-				$asql = "SELECT Audience FROM `client_info` WHERE cid='$delid'";
-				$aresult = $conn->query($asql);
-				while ($arow = $aresult->fetch_assoc()) {
-				?>
-					<div class="funkyradio">
-						<div class="funkyradio-default">
-							<input type="radio" name="radio" class="Audience" value="0" id="radio1" <?php if (($arow['Audience']) == '0') echo "checked='checked'"; ?> />
-							<label for="radio1" style="font-size: smaller;font-weight: 700;">Sent Friend Request/ Connection Request/ Welcome Message</label>
-						</div>
-						<div class="funkyradio-default">
-							<input type="radio" name="radio" class="Audience" value="1" id="radio1" <?php if (($arow['Audience']) == '1') echo "checked='checked'"; ?> />
-							<label for="radio1" style="font-size: smaller;font-weight: 700;">Cold Audience/ Want Info/ Educate</label>
-						</div>
-						<div class="funkyradio-primary">
-							<input type="radio" name="radio" class="Audience" value="2" id="radio2" <?php if (($arow['Audience']) == '2') echo "checked='checked'"; ?> />
-							<label for="radio2" style="font-size: smaller;font-weight: 700;">Interested Audience</label>
-						</div>
-						<div class="funkyradio-success">
-							<input type="radio" name="radio" class="Audience" value="3" id="radio3" <?php if (($arow['Audience']) == '3') echo "checked='checked'"; ?> />
-							<span for="radio3" style="font-size: smaller;font-weight: 700;">Warm Audience / Had Interaction/Ready For Call</span>
-						</div>
-						<div class="funkyradio-danger">
-							<input type="radio" name="radio" class="Audience" value="4" id="radio4" <?php if (($arow['Audience']) == '4') echo "checked='checked'"; ?> />
-							<label for="radio4" style="font-size: smaller;font-weight: 700;">Hot Audience /Ready For Offer</label>
-						</div>
-						<div class="funkyradio-danger">
-							<input type="radio" name="radio" class="Audience" value="5" id="radio5" <?php if (($arow['Audience']) == '5') echo "checked='checked'"; ?> />
-							<label for="radio5" style="font-size: smaller;font-weight: 700;">No Match</label>
-						</div>
+				<div class="funkyradio">
+					<h5>Levels</h5>
+					<div class="funkyradio-default">
+						<input type="radio" name="radio" class="Audience" value="0" id="radio1" <?php if (($arow['Audience']) == '0') echo "checked='checked'"; ?> />
+						<label for="radio1" style="font-size: smaller;font-weight: 700;">Sent Friend Request/ Connection Request/ Welcome Message</label>
 					</div>
-				<?php } ?>
+					<div class="funkyradio-default">
+						<input type="radio" name="radio" class="Audience" value="1" id="radio1" <?php if (($arow['Audience']) == '1') echo "checked='checked'"; ?> />
+						<label for="radio1" style="font-size: smaller;font-weight: 700;">Cold Audience/ Want Info/ Educate</label>
+					</div>
+					<div class="funkyradio-primary">
+						<input type="radio" name="radio" class="Audience" value="2" id="radio2" <?php if (($arow['Audience']) == '2') echo "checked='checked'"; ?> />
+						<label for="radio2" style="font-size: smaller;font-weight: 700;">Interested Audience</label>
+					</div>
+					<div class="funkyradio-success">
+						<input type="radio" name="radio" class="Audience" value="3" id="radio3" <?php if (($arow['Audience']) == '3') echo "checked='checked'"; ?> />
+						<span for="radio3" style="font-size: smaller;font-weight: 700;">Warm Audience / Had Interaction/Ready For Call</span>
+					</div>
+					<div class="funkyradio-danger">
+						<input type="radio" name="radio" class="Audience" value="4" id="radio4" <?php if (($arow['Audience']) == '4') echo "checked='checked'"; ?> />
+						<label for="radio4" style="font-size: smaller;font-weight: 700;">Hot Audience /Ready For Offer</label>
+					</div>
+					<div class="funkyradio-danger">
+						<input type="radio" name="radio" class="Audience" value="5" id="radio5" <?php if (($arow['Audience']) == '5') echo "checked='checked'"; ?> />
+						<label for="radio5" style="font-size: smaller;font-weight: 700;">No Match</label>
+					</div>
+				</div>
+			</div>
+
+			<br>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="">Description </label>
+					<textarea name="description" data-id="<?= $id; ?>" id="description" class="form-control"><?php echo nl2br($arow['description']); ?></textarea>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="funkyradio">
+					<h5>FB Group</h5>
+					<div class="funkyradio-default">
+						<input type="radio" data-id="<?= $id; ?>" name="fggroup" class="fggroup" value="0" id="radio1" <?php if (($arow['fggroup']) == '0') echo "checked='checked'"; ?> />
+						<label for="radio1" style="font-size: smaller;font-weight: 700;">Yes</label>
+					</div>
+					<div class="funkyradio-default">
+						<input type="radio" data-id="<?= $id; ?>" name="fggroup" class="fggroup" value="1" id="radio1" <?php if (($arow['fggroup']) == '1') echo "checked='checked'"; ?> />
+						<label for="radio1" style="font-size: smaller;font-weight: 700;">No</label>
+					</div>
+				</div>
 			</div>
 		</div>
 
-		<br>
 		<div class="row">
 
 			<div class="col-md-12">
@@ -480,6 +484,40 @@ if ($result->num_rows > 0) {
 	</script>
 	<script>
 		$(document).ready(function() {
+			$('.fggroup').change(function() {
+				var fggroup = $(this).val();
+				var id = $(this).data('id');
+				$.ajax({
+					type: "post",
+					dataType: "html",
+					url: 'changefggroup',
+					data: {
+						fggroup: fggroup,
+						id: id
+					},
+					success: function(data) {
+						// console.log(data);
+					}
+				});
+			});
+
+			$('#description').keyup(function() {
+				var description = $(this).val();
+				var id = $(this).data('id');
+				$.ajax({
+					type: "post",
+					dataType: "html",
+					url: 'changefggroup',
+					data: {
+						description: description,
+						id: id
+					},
+					success: function(data) {
+						// console.log(data);
+					}
+				});
+			});
+
 			$('.Audience').change(function() {
 				var audience = $(this).val();
 				var cid = <?php echo $id; ?>;

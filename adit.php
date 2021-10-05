@@ -34,11 +34,12 @@ if (isset($_REQUEST['ok'])) {
 	$dataform = implode(",", $_POST['dataform']);
 	$rj = "UPDATE `client_info` SET `firstname`='$fname',`lastname`='$lname',`email`='$email',`phone`='$number',`address`='$address',`source`='$source',`lead`='$lead', `dataform`='$dataform' WHERE cid=$eid";
 	$success = mysqli_query($conn, $rj);
-	header('location:login');
+	header('location:allAudience');
 }
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title></title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -53,15 +54,33 @@ if (isset($_REQUEST['ok'])) {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<style>
+		.btns {
+			border: 2px solid #000;
+			color: #000;
+			font-size: 20px;
+			font-weight: 600;
+			padding: 5px 10px;
+			/* width: 120px !important; */
+			border-radius: 5px;
+			text-decoration: none;
+		}
+
+		.btns:hover {
+			text-decoration: none;
+			color: #000;
+		}
+	</style>
 </head>
+
 <body>
 	<div class="container">
 		<img src="manas.png" class="img-fluid"><br>
-		<a id="log" class="float-right" href="l	ogout"><i class="fas fa-sign-out-alt"></i> Logout </a>
-		<a class="btn btn-primary" href="home">Home</a>
-		<a href="notes?id=<?= $_REQUEST['eid'] ?>" class='btn btn-primary'>Show History</a>
-		<a class="btn btn-primary" href="research?id=<?= $_REQUEST['eid'] ?>">Show Research</a>
-		<div class="myform form ">
+		<a class="btn btns" style="float: right;" href="l	ogout"><i class="fas fa-sign-out-alt"></i> Logout </a>
+		<a class="btn btns" href="home">Home</a>
+		<a href="notes?id=<?= $_REQUEST['eid'] ?>" class="btn btns">Show History</a>
+		<a class="btn btns" href="research?id=<?= $_REQUEST['eid'] ?>">Show Research</a>
+		<div class="myform form " style="margin-top: 30px;">
 			<form action="" method="post">
 				<div class="row">
 					<div class="col-md-3">
@@ -104,16 +123,15 @@ if (isset($_REQUEST['ok'])) {
 						</div>
 						<div class="form-check">
 							<label class="form-check-label">
-								<input type="radio" name="leadowener" value="Courtney Way" <?php if (isset($d) && $d == "Courtney Way") {
-																								echo "checked";
-																							} ?> class="form-check-input"> Courtney Way
-							</label>
+								<input type="radio" name="leadowener" value="SP1" <?php if (isset($d) && $d == "SP1") {
+																						echo "checked";
+																					} ?> class="form-check-input"> SP1 </label>
 						</div>
 						<div class="form-check">
 							<label class="form-check-label">
-								<input type="radio" name="leadowener" value="Sydney Hungeford" <?php if (isset($d) && $d == "Sydney Hungeford") {
-																									echo "checked";
-																								} ?> class="form-check-input"> Sydney Hungeford
+								<input type="radio" name="leadowener" value="SP2" <?php if (isset($d) && $d == "SP2") {
+																						echo "checked";
+																					} ?> class="form-check-input"> SP2
 							</label>
 						</div>
 						<br><br>
@@ -209,49 +227,56 @@ if (isset($_REQUEST['ok'])) {
 						<label class="font-weight-bold">Level</label>
 						<div class="form-check">
 							<label class="form-check-label">
-								<input type="radio" name="level" value="1" <?php if (isset($level) && $level == "0") {
-																				echo "checked";
-																			} ?> class="form-check-input"> Level 0 - Sent Friend Request/ Connection Request/ Welcome Message
-							</label>
-						</div>
-						<div class="form-check">
-							<label class="form-check-label">
 								<input type="radio" name="level" value="1" <?php if (isset($level) && $level == "1") {
 																				echo "checked";
-																			} ?> class="form-check-input"> Level 1 - Cold Audience/ Want Info/ Educate
+																			} ?> class="form-check-input"> Level 1 - Sent Friend Request/ Connection Request/ Welcome Message
 							</label>
 						</div>
 						<div class="form-check">
 							<label class="form-check-label">
-								<input type="radio" name="level" value="2" <?php if (isset($level) && $level == "2") {
+								<input type="radio" name="level" value="1" <?php if (isset($level) && $level == "2") {
 																				echo "checked";
-																			} ?> class="form-check-input"> Level 2 - Interested Audience
+																			} ?> class="form-check-input"> Level 2 - Cold Audience/ Want Info/ Educate
 							</label>
 						</div>
 						<div class="form-check">
 							<label class="form-check-label">
-								<input type="radio" name="level" value="3" <?php if (isset($level) && $level == "3") {
+								<input type="radio" name="level" value="2" <?php if (isset($level) && $level == "3") {
 																				echo "checked";
-																			} ?> class="form-check-input"> Level 3 - Warm Audience / Had Interaction/Ready For Call
+																			} ?> class="form-check-input"> Level 3 - Interested Audience
 							</label>
 						</div>
 						<div class="form-check">
 							<label class="form-check-label">
-								<input type="radio" name="level" value="4" <?php if (isset($level) && $level == "4") {
+								<input type="radio" name="level" value="3" <?php if (isset($level) && $level == "4") {
 																				echo "checked";
-																			} ?> class="form-check-input"> Level 4 - Hot Audience /Ready For Offer
+																			} ?> class="form-check-input"> Level 4 - Warm Audience / Had Interaction/Ready For Call
 							</label>
 						</div>
 						<div class="form-check">
 							<label class="form-check-label">
-								<input type="radio" name="level" value="5" <?php if (isset($level) && $level == "5") {
+								<input type="radio" name="level" value="4" <?php if (isset($level) && $level == "5") {
 																				echo "checked";
-																			} ?> class="form-check-input"> Level 5 - No Match
+																			} ?> class="form-check-input"> Level 5 - Hot Audience /Ready For Offer
+							</label>
+						</div>
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="radio" name="level" value="5" <?php if (isset($level) && $level == "6") {
+																				echo "checked";
+																			} ?> class="form-check-input"> Level 6 - No Match
+							</label>
+						</div>
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="radio" name="level" value="5" <?php if (isset($level) && $level == "7") {
+																				echo "checked";
+																			} ?> class="form-check-input"> Level 7 - Converted
 							</label>
 						</div>
 					</div>
 					<div class="col-md-12">
-						<input type="submit" name="ok" value="Submit" style="color: #ffffff;background: #0000b3; height: 30px; width: 150px;border: #ff8000 1px solid; font-size: 17px;">
+						<input type="submit" name="ok" value="Submit" class="btn btns">
 					</div>
 				</div>
 			</form>

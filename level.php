@@ -299,7 +299,7 @@ function getnumofrow($Audience)
 				</time>
 			</section>
 			<section class="card-cont">
-				<h3 style="padding:0 270px 20px 0 ;">No Match<br></h3>
+				<h3 style="padding:0 250px 0 0 ;">Nurture / No match<br></h3>
 				<a href="matchAudience"><?= getnumofrow('6'); ?></a>
 			</section>
 		</article>

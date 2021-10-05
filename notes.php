@@ -223,11 +223,9 @@ if ($historyMember->num_rows > 0) {
 		<br>
 		<a class="btn btns" href="home">Home</a>
 		<a class="btn btns" href="research?id=<?= $id ?>">Show Research</a>
-		<a class="btn btns" href="allAudience">Show All</a>
-		<a class="btn btns" href="login">Add New</a>
-		<a class="btn btns" href="level">Levels List</a>
 		<a id="log" class="float-right" href="logout"><i class="fas fa-sign-out-alt"></i> Logout </a>
 		<a class='btns btn' href="javascript:history.back()">Back</a>
+		<h1 style="margin:25px 0">Name:- <?= $name . " (" . $cid . ")"; ?></h1>
 		<div class="row">
 
 			<div class="col-md-6">
@@ -238,7 +236,7 @@ if ($historyMember->num_rows > 0) {
 
 						<div class="panel-heading">
 
-							<h3 class="panel-title">Name:- <?= $name." (". $cid.")"; ?></h3>
+							<h3 class="panel-title">Notes</h3>
 
 						</div><br>
 

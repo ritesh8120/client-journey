@@ -98,6 +98,7 @@
     <form style="margin: 20px;">
     
         <?php
+        date_default_timezone_set("UTC");
         if (isset($_GET['submit'])) {
             $currentYear = $_GET['admission_year'];
             if (strstr($_SERVER['REQUEST_URI'], "worksheet")) {
@@ -109,7 +110,7 @@
             $admission_month = date('F');
             }
         }
-        date_default_timezone_set("UTC");
+        
         echo '<label> Year: </label><br><select name="admission_year" id="admission_year" class="form-control" data-component="date">';
         echo '<option value="' . $currentYear . '" checked>' . $currentYear . '</option>';
         for ($year = 2000; $year <= 3035; $year++) {

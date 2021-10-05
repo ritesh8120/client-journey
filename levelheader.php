@@ -220,5 +220,4 @@ if (isset($_REQUEST["delid"])) {
         <br>
         <a class="btn btns" style="width:150px;margin:5px" href="home">Home</a>
         <a class="btn btns" style="width:150px;margin:5px" href="allAudience">Show All</a>
-        <a class="btn btns" style="width:150px;margin:5px" href="login">Add New</a>
-        <a class="btn btns" style="width:150px;margin:5px" href="level">Levels List</a>
+        <a class='btns btn' href="javascript:history.back()">Back</a>

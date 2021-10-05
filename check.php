@@ -58,8 +58,9 @@ if (isset($_POST['audience']))
 {
 	$audience = $_POST['audience'];
 	$cid = $_POST['cid'];
-
-	$conn->query("update client_info SET `Audience`=$audience where `cid`='$cid'");
+	$fggroup = $_POST['fggroup'];
+	$description = $_POST['description'];
+	$conn->query("update client_info SET `Audience`=$audience,`description`='$description',`fggroup`='$fggroup' where `cid`='$cid'");
 }
 
 $conn->close();

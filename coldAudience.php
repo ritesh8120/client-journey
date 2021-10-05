@@ -5,8 +5,8 @@
 	<thead>
 		<tr>
 			<th class="text-center">No</th>
-			<th class="text-center">Uniq Id</th>
 			<th class="text-center">Start Date</th>
+			<th class="text-center">Unique Id</th>
 			<th class="text-center">Name</th>
 			<th class="text-center">Email</th>
 			<th class="text-center">Location</th>
@@ -38,10 +38,10 @@
 				$row1 = mysqli_fetch_array($query1);
 				$row2 = mysqli_fetch_array($query2);
 		?>
-				<tr class="<?= $checked ?><?= $style ?>">
+				<tr>
 					<td class="text-center"><?php echo $i; ?></td>
-					<td class="text-center"><?php echo $row['cid']; ?></td>
 					<td class="text-center"><?= date('m/d/Y', strtotime($row['date'])); ?></td>
+					<td class="text-center"><a href="research?id=<?php echo $row['cid'] ?>"><?php echo $row['cid']; ?></a></td>
 					<td class="text-center"><a href="research?id=<?php echo $row['cid'] ?>"><?php echo $row['firstname'] ?><?php echo " " . $row['lastname']; ?></a></td>
 					<td><?php echo $row['email'] ?></td>
 					<td class="text-center"><?php echo $row['address'] ?></td>
@@ -61,11 +61,7 @@
 							<option <?= ($row['Audience'] == '6') ? "selected='selected'" : ""; ?> value="6">Level 6</option>
 							<option <?= ($row['Audience'] == '7') ? "selected='selected'" : ""; ?> value="7">Level 7</option>
 						</select></td>
-					<td style="padding: 10px 0 !important;"><select class="fggroup" style="width: 100%;" data-id="<?php echo $row['cid'] ?>">
-							<option disabled>--Select Level--</option>
-							<option <?= ($row['fggroup'] == '0') ? "selected='selected'" : ""; ?> value="0">Yes</option>
-							<option <?= ($row['fggroup'] == '1') ? "selected='selected'" : ""; ?> value="1">No</option>
-						</select></td>
+					<td class="text-center"><?= ($row['fggroup'] == '0') ? "Yes" : "No"; ?></td>
 					<td class="text-center"><?php echo $row2['title']; ?></td>
 					<td class="text-center"><?php echo $row1['title']; ?></td>
 					<td class="text-center"><?php echo ($row1['date'] == "") ? " " : date('m/d/y', strtotime($row1['date'])); ?></td>

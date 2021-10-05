@@ -131,11 +131,9 @@ $arow = mysqli_fetch_array($res);
 		<br>
 		<a class="btns btn" href="home">Home</a>
 		<a href="notes?id=<?= $id ?>" class='btns btn'>Show History</a>
-		<a class="btn btns" href="allAudience">Show All</a>
-		<a class="btn btns" href="login">Add New</a>
-		<a class="btn btns" href="level">Levels List</a>
 		<a class="float-right btns btn" href="logout"><i class="fas fa-sign-out-alt"></i> Logout </a>
 		<a class='btns btn' href="javascript:history.back()">Back</a>
+		<button type="button" class='float-right btns btn mx-2 save' data-id="<?php echo $id; ?>">save</button>
 		<div class="row" style="margin-top: 25px;">
 			<div class="col-md-6">
 				<table>
@@ -171,28 +169,32 @@ $arow = mysqli_fetch_array($res);
 				<div class="funkyradio">
 					<h5>Levels</h5>
 					<div class="funkyradio-default">
-						<input type="radio" name="radio" class="Audience" value="0" id="radio1" <?php if (($arow['Audience']) == '0') echo "checked='checked'"; ?> />
+						<input type="radio" name="radio" class="Audience" value="1" id="radio1" <?php if (($arow['Audience']) == '1') echo "checked='checked'"; ?> />
 						<label for="radio1" style="font-size: smaller;font-weight: 700;">Sent Friend Request/ Connection Request/ Welcome Message</label>
 					</div>
 					<div class="funkyradio-default">
-						<input type="radio" name="radio" class="Audience" value="1" id="radio1" <?php if (($arow['Audience']) == '1') echo "checked='checked'"; ?> />
+						<input type="radio" name="radio" class="Audience" value="2" id="radio1" <?php if (($arow['Audience']) == '2') echo "checked='checked'"; ?> />
 						<label for="radio1" style="font-size: smaller;font-weight: 700;">Cold Audience/ Want Info/ Educate</label>
 					</div>
 					<div class="funkyradio-primary">
-						<input type="radio" name="radio" class="Audience" value="2" id="radio2" <?php if (($arow['Audience']) == '2') echo "checked='checked'"; ?> />
+						<input type="radio" name="radio" class="Audience" value="3" id="radio2" <?php if (($arow['Audience']) == '3') echo "checked='checked'"; ?> />
 						<label for="radio2" style="font-size: smaller;font-weight: 700;">Interested Audience</label>
 					</div>
 					<div class="funkyradio-success">
-						<input type="radio" name="radio" class="Audience" value="3" id="radio3" <?php if (($arow['Audience']) == '3') echo "checked='checked'"; ?> />
+						<input type="radio" name="radio" class="Audience" value="4" id="radio3" <?php if (($arow['Audience']) == '4') echo "checked='checked'"; ?> />
 						<span for="radio3" style="font-size: smaller;font-weight: 700;">Warm Audience / Had Interaction/Ready For Call</span>
 					</div>
 					<div class="funkyradio-danger">
-						<input type="radio" name="radio" class="Audience" value="4" id="radio4" <?php if (($arow['Audience']) == '4') echo "checked='checked'"; ?> />
+						<input type="radio" name="radio" class="Audience" value="5" id="radio4" <?php if (($arow['Audience']) == '5') echo "checked='checked'"; ?> />
 						<label for="radio4" style="font-size: smaller;font-weight: 700;">Hot Audience /Ready For Offer</label>
 					</div>
 					<div class="funkyradio-danger">
-						<input type="radio" name="radio" class="Audience" value="5" id="radio5" <?php if (($arow['Audience']) == '5') echo "checked='checked'"; ?> />
-						<label for="radio5" style="font-size: smaller;font-weight: 700;">No Match</label>
+						<input type="radio" name="radio" class="Audience" value="6" id="radio5" <?php if (($arow['Audience']) == '6') echo "checked='checked'"; ?> />
+						<label for="radio5" style="font-size: smaller;font-weight: 700;">Nurture / No match</label>
+					</div>
+					<div class="funkyradio-danger">
+						<input type="radio" name="radio" class="Audience" value="7" id="radio7" <?php if (($arow['Audience']) == '7') echo "checked='checked'"; ?> />
+						<label for="radio7" style="font-size: smaller;font-weight: 700;">Converted</label>
 					</div>
 				</div>
 			</div>
@@ -456,7 +458,7 @@ $arow = mysqli_fetch_array($res);
 
 								</div>
 							<?php } ?>
-							<button id="save" type="button" style="width:200px;font-size:20px;font-weight:600;" class="float-right btn btns" data-id="<?php echo $id; ?>">save</button>
+							<button type="button" style="width:200px;font-size:20px;font-weight:600;" class="float-right btn btns save" data-id="<?php echo $id; ?>">save</button>
 
 
 						</div>
@@ -484,53 +486,7 @@ $arow = mysqli_fetch_array($res);
 	</script>
 	<script>
 		$(document).ready(function() {
-			$('.fggroup').change(function() {
-				var fggroup = $(this).val();
-				var id = $(this).data('id');
-				$.ajax({
-					type: "post",
-					dataType: "html",
-					url: 'changefggroup',
-					data: {
-						fggroup: fggroup,
-						id: id
-					},
-					success: function(data) {
-						// console.log(data);
-					}
-				});
-			});
-
-			$('#description').keyup(function() {
-				var description = $(this).val();
-				var id = $(this).data('id');
-				$.ajax({
-					type: "post",
-					dataType: "html",
-					url: 'changefggroup',
-					data: {
-						description: description,
-						id: id
-					},
-					success: function(data) {
-						// console.log(data);
-					}
-				});
-			});
-
-			$('.Audience').change(function() {
-				var audience = $(this).val();
-				var cid = <?php echo $id; ?>;
-				$.ajax({
-					type: "POST",
-					url: "check",
-					data: {
-						audience: audience,
-						cid: cid
-					}
-				});
-			});
-			$('#save').click(function() {
+			$('.save').click(function() {
 				var search = editor.getData();
 				var fbprolink = $('.fbprolink').val();
 				var fbpagelink = $('.fbpagelink').val();
@@ -547,7 +503,7 @@ $arow = mysqli_fetch_array($res);
 				var problem2 = $('.problem2').val();
 				var problem3 = $('.problem3').val();
 				var search_id = $(this).attr('data-id');
-				// alert(search);	
+
 				$.ajax({
 					url: "history_notes",
 					data: {
@@ -571,6 +527,21 @@ $arow = mysqli_fetch_array($res);
 					type: "POST",
 					success: function(data) {
 						$("div.success").fadeIn(300).delay(1500).fadeOut(400);
+					}
+				});
+
+				var fggroup = $('.fggroup:checked').val();
+				var description = $('#description').val();
+				var audience = $('.Audience:checked').val();
+				var cid = <?php echo $id; ?>;
+				$.ajax({
+					type: "POST",
+					url: "check",
+					data: {
+						fggroup: fggroup,
+						description: description,
+						audience: audience,
+						cid: cid
 					}
 				});
 			});
